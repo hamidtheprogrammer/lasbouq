@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Italiana } from "next/font/google";
+import { Geist, Geist_Mono, Italiana, Poppins} from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,6 +18,11 @@ const italiana = Italiana({
   subsets:["latin"],
 })
 
+const poppins = Poppins({
+  weight:"300",
+  variable:"--font-poppins"
+})
+
 export const metadata: Metadata = {
   title: "Lasbouq",
   description: "A agency platform for providing workspaces to teams",
@@ -31,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${italiana.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${italiana.variable} ${poppins.variable} antialiased`}
       >
         {children}
       </body>
