@@ -23,11 +23,10 @@ Filters	        Client-side
 ```
 
 ## Architecture Overview
-
-
+See 👉 [System Architecture](docs/system-architecture.md)
 
 ## Project Phases
-### Phase 1
+### Phase 1 (current)
 Static pages only
 No filtering
 No backend
@@ -41,3 +40,42 @@ Performance tuning
 Thin API
 Observability
 Scaling content
+
+## Implemented features 
+### Homepage
+Hero section
+
+## Planned features
+- homepage
+- workspaces catalogue page
+- workspace detail page
+- application page
+
+## Getting started
+
+### Tech stack
+React 19.2.3
+Next 16.1.4
+
+### Prequisites
+- node.js 18.*
+- npm
+
+### Installation
+```bash
+# Clone the TEAMHUB repository from GitHub to your local machine
+git clone https://github.com/hamidtheprogrammer/lasbouq.git
+
+# change to client directory
+cd client
+
+# install all dependencies
+npm install
+
+# start app
+npm run dev
+```
+
+## Tests
+
+[Functional tests](docs/tests/functional/homepage-test.md)
