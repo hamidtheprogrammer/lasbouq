@@ -4,11 +4,11 @@
 A platform for an agency that provides premium workspaces for teams across multiple locations. The platform relies heavily on visual appeal and frequent content updates. It uses static site generation for core pages, ISR for refreshment, and Server-Side Rendering only when justified to optimize performance as content scales.
 
 ## Business Constraints
-Content-heavy directory
-SEO critical
-Must load well on slow networks
-Low backend dependency
-Safe to update content frequently
+- Content-heavy directory
+- SEO critical
+- Must load well on slow networks
+- Low backend dependency
+- Safe to update content frequently
 
 more @ [Product requirement](docs/product-requirement.md)
 
@@ -27,19 +27,19 @@ See 👉 [System Architecture](docs/system-architecture.md)
 
 ## Project Phases
 ### Phase 1 (current)
-Static pages only
-No filtering
-No backend
+- Static pages only
+- No filtering
+- No backend
 
 ### Phase 2
-Client-side filtering
-Skeleton loading
-Performance tuning
+- Client-side filtering
+- Skeleton loading
+- Performance tuning
 
 ### Phase 3
-Thin API
-Observability
-Scaling content
+- Thin API
+- Observability
+- Scaling content
 
 ## Implemented features 
 ### Homepage
@@ -54,8 +54,8 @@ Hero section
 ## Getting started
 
 ### Tech stack
-React 19.2.3
-Next 16.1.4
+- React 19.2.3
+- Next 16.1.4
 
 ### Prequisites
 - node.js 18.*

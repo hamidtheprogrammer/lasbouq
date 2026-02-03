@@ -7,13 +7,13 @@ All public traffic is served from CDN-cached static assets, content are fetched 
 
 ## Route rendering strategy map
 
-Home
+- Home
 
-Workspace
+- Workspace
 
-Workspace detail
+- Workspace detail
 
-Application
+- Application
 
 ## Sequence diagrams for critical pages
 
