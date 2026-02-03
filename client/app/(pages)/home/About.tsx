@@ -51,7 +51,7 @@ const About = () => {
             alt="image"
             className="md:w-full object-cover sm:w-1/2 max-sm:w-full md:max-w-[15rem]"
           />
-          <div className="flex-1 md:hidden">
+          <div test-id="about-img-3" className="flex-1 md:hidden">
             <Image
             src={"/about-image-3.png"}
             width={500}
