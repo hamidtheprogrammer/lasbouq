@@ -37,14 +37,14 @@ const Hero = () => {
           </Link>
         </aside>
         <div className="max-sm:text-center max-sm:size-full max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center sm:absolute sm:bottom-5 font-italiana font-bold capitalize md:w-[58rem]">
-          <p className="text-xs tracking-[0.5rem]">
+          <p className="text-xs tracking-[0.5rem] max-xs:tracking-[0.3rem]">
             For businesses and individuals
           </p>
           <h1 className="max-xs:text-5xl max-xs:w-[20rem] max-md:text-[6.5rem] max-sm:text-6xl max-sm:w-[30rem] max-sm:leading-[4rem] max-md:leading-[7rem] text-[8.8rem] leading-[8.5rem] sm:text-balance">
             Home of creative minds
           </h1>
           <Link
-            className={`sm:hidden group broder group relative ${styles} bg-[#A37A4B] before:bg-background`}
+            className={`sm:hidden max-md:mt-7 group relative ${styles} bg-[#A37A4B] before:bg-background`}
             href={"/apply"}
           >
             <p

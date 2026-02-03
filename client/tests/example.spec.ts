@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test';
 
+const URL = "http://localhost:3000/"
+
 test.describe("Desktop", ()=>{
-  test('has title', async ({ page }) => {
-  await page.goto('http://localhost:3000/');
+  test('has title and CTA', async ({ page }) => {
+  await page.goto(URL);
 
   // Expect a title "to contain" a substring.
   await expect(page.getByRole('heading',{name:"Home of creative minds"})).toBeVisible();
@@ -11,6 +13,14 @@ test.describe("Desktop", ()=>{
   await expect(page.getByRole("link", {name:"Apply for membership"})).toBeVisible();
 
 });
+
+  test("about us link", async ({page})=>{
+    await page.goto(URL);
+
+    // About us link
+
+    await expect(page.getByRole("link",{name:"Our story"})).toBeVisible();
+  })
 })
 
 test.describe("Mobile", ()=>{
