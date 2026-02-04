@@ -26,7 +26,7 @@ const Hero = () => {
             asperiores. Ea, cumque.
           </p>
           <Link
-            className={`group broder group relative ${styles} bg-[#A37A4B] before:bg-background`}
+            className={`group relative ${styles} bg-[#A37A4B] before:bg-background`}
             href={"/apply"}
           >
             <p

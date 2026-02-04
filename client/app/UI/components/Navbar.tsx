@@ -17,7 +17,7 @@ const Nav = () => {
       <h1 className="font-italiana font-extrabold text-3xl">LASBOUQ</h1>
       <ul className="flex gap-14 text-[0.85rem] tracking-[0.1rem] max-md:hidden">
         {navList.map((li) => (
-          <li>
+          <li key={li.name}>
             <Link href={li.link}>{li.name}</Link>
           </li>
         ))}
