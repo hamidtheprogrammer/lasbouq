@@ -1,6 +1,7 @@
 import About from "./(pages)/home/About";
 import Hero from "./(pages)/home/Hero";
 import type { Metadata } from "next";
+import Location from "./(pages)/home/Location";
 
 export const metadata: Metadata = {
   title: "Home | Lasbouq",
@@ -12,6 +13,7 @@ export default function Home() {
     <div className="size-full">
       <Hero/>
       <About/>
+      <Location/>
     </div>
   );
 }
