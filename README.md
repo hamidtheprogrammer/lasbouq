@@ -43,7 +43,9 @@ See 👉 [System Architecture](docs/system-architecture.md)
 
 ## Implemented features 
 ### Homepage
-Hero section
+- Hero section
+- About section
+- Locations section
 
 ## Planned features
 - homepage
