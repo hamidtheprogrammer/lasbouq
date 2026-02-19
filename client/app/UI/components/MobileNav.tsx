@@ -7,7 +7,7 @@ const MobileNav = () => {
       <nav test-id="mobile-nav" className="w-full h-fit bg-background">
         <ul className="flex flex-col items-center gap-5 py-5 text-[0.85rem] tracking-[0.1rem] text-foreground">
           {navList.map((li) => (
-            <li>
+            <li key={li.name}>
               <Link href={li.link}>{li.name}</Link>
             </li>
           ))}

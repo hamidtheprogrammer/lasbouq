@@ -15,7 +15,7 @@ const Location = () => {
           </div>
           <Link
             className={`h-fit group border border-foreground relative ${styles} before:bg-foreground`}
-            href={"/apply"}
+            href={"/locations"}
           >
             <p
               className={`relative text-foreground transition-colors duration-500 group-hover:text-white`}
@@ -24,7 +24,7 @@ const Location = () => {
             </p>
           </Link>
         </div>
-        <ul className="flex flex-wrap gap-20 max-sm:gap-14">
+        <ul className="flex flex-wrap gap-10 max-sm:gap-14">
           {Array.from({ length: 3 }).map((_, idx) => (
             <li
               key={idx}
@@ -39,7 +39,7 @@ const Location = () => {
               />
               <div className="space-y-2">
                 <h1 className="font-semibold text-xl">Peter Taylor house</h1>
-                <p className="text-sm opacity-70">
+                <p className="text-sm max-md:text-xs opacity-70">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Eligendi pariatur ad, soluta odit cum quam itaque dolorum
                   dolorem
