@@ -46,6 +46,7 @@ See 👉 [System Architecture](docs/system-architecture.md)
 - Hero section
 - About section
 - Locations section
+- Benefits section
 
 ## Planned features
 - homepage
