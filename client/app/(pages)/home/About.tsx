@@ -35,10 +35,11 @@ const About = () => {
             doloremque.
           </p>
           <Link
+            
             className={`group relative ${styles} bg-[#A37A4B] before:bg-black`}
             href={"/apply"}
           >
-            <p className={`relative text-white transition-colors duration-500`}>
+            <p test-id="story-btn" className={`relative text-white transition-colors duration-500`}>
               Our Story
             </p>
           </Link>
@@ -53,12 +54,12 @@ const About = () => {
           />
           <div test-id="about-img-3" className="flex-1 md:hidden">
             <Image
-            src={"/about-image-3.png"}
-            width={500}
-            height={500}
-            alt="image"
-            className="size-full object-cover"
-          />
+              src={"/about-image-3.png"}
+              width={500}
+              height={500}
+              alt="image"
+              className="size-full object-cover"
+            />
           </div>
         </div>
       </div>
