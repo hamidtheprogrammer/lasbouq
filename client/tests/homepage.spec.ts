@@ -22,7 +22,7 @@ test.describe("Desktop", () => {
 
     // About us link
 
-    const storyButton = page.getByRole("link", { name: "Our story" });
+    const storyButton = page.getByTestId("story-btn");
 
     await storyButton.click();
 
