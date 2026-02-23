@@ -47,6 +47,8 @@ See 👉 [System Architecture](docs/system-architecture.md)
 - About section
 - Locations section
 - Benefits section
+- Membership CTA
+- Footer section
 
 ## Planned features
 - homepage
