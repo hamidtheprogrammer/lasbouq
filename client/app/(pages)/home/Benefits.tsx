@@ -45,7 +45,7 @@ const Benefits = () => {
           />
       </div>
       <div className="w-full flex md:h-screen md:py-20 max-md:flex-col max-md:mt-16">
-        <div className="relative md:h-full max-md:w-full md:w-1/2 flex flex-col justify-between md:px-16 max-md:flex-row max-md:items-center">
+        <div className="md:order-2 relative md:h-full max-md:w-full md:w-1/2 flex flex-col justify-between md:px-16 max-md:flex-row max-md:items-center">
           <p className="max-md:order-2 max-sm:text-xs max-w-[12rem] md:self-end text-end">
             Connect beyond your screen. Members get access to curated talks,
             workshops, and social events designed to spark real connections.
@@ -55,7 +55,7 @@ const Benefits = () => {
           </h1>
         </div>
           <Image
-            className="max-md:size-full max-md:mt-10 flex-1 object-cover"
+            className="md:order-1 max-md:size-full max-md:mt-10 flex-1 object-cover"
             src={"/about-image-2.png"}
             width={500}
             height={500}
