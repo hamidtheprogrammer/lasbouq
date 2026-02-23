@@ -6,6 +6,7 @@ import MobileNavWrapper from "./MobileNavWrapper";
 import MobileNav from "./MobileNav";
 
 export const navList = [
+  { name: "About", link: "/about" },
   { name: "Membership", link: "/membership" },
   { name: "Locations", link: "/locations" },
   { name: "Support", link: "/support" },
