@@ -10,12 +10,14 @@ const Hero = () => {
       <Image
         id="hero"
         className="size-full object-cover absolute"
-        fill
+        width={500}
+        height={500}
         alt="background image"
         loading="eager"
         fetchPriority="high"
         src={"/hero.png"}
       />
+      {/* <img src="/hero.png" fetchPriority="high" loading="eager" alt="" className="size-full object-cover absolute"/> */}
       <div className="size-full absolute bg-black/65 inset-0"></div>
       <div className="relative text-background w-full flex-1 p-5">
         <aside className="absolute max-sm:hidden right-5 w-[20rem] flex flex-col gap-4 max-md:top-10">

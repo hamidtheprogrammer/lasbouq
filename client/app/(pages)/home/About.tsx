@@ -7,6 +7,8 @@ const About = () => {
     <section className="text-foreground px-5 py-10 mt-38 max-md:mt-20 md:size-full flex gap-10 max-md:flex-col md:justify-between items-center">
       <div className="flex flex-col h-full flex-1 justify-between max-md:w-full max-md:items-center">
         <Image
+          loading="lazy"
+          fetchPriority="auto"
           src={"/image.png"}
           width={500}
           height={500}
@@ -19,6 +21,8 @@ const About = () => {
       </div>
       <div className="h-full max-md:hidden md:w-[]">
         <Image
+          loading="lazy"
+          fetchPriority="auto"
           src={"/about-image-3.png"}
           width={500}
           height={500}
@@ -35,17 +39,21 @@ const About = () => {
             doloremque.
           </p>
           <Link
-            
             className={`group relative ${styles} bg-[#A37A4B] before:bg-black`}
             href={"/apply"}
           >
-            <p test-id="story-btn" className={`relative text-white transition-colors duration-500`}>
+            <p
+              test-id="story-btn"
+              className={`relative text-white transition-colors duration-500`}
+            >
               Our Story
             </p>
           </Link>
         </div>
         <div className="w-full max-sm:h-fit max-md:h-80 flex max-sm:flex-col max-md:gap-5 md:flex-row md:justify-end">
           <Image
+            loading="lazy"
+            fetchPriority="auto"
             src={"/about-image-1.png"}
             width={500}
             height={500}
@@ -54,6 +62,8 @@ const About = () => {
           />
           <div test-id="about-img-3" className="flex-1 md:hidden">
             <Image
+              loading="lazy"
+              fetchPriority="auto"
               src={"/about-image-3.png"}
               width={500}
               height={500}

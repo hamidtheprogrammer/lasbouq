@@ -37,6 +37,7 @@ const Benefits = () => {
           </h1>
         </div>
           <Image
+          loading="lazy"
             className="max-md:size-full max-md:mt-10 flex-1 object-cover"
             src={"/image.png"}
             width={500}
@@ -55,6 +56,7 @@ const Benefits = () => {
           </h1>
         </div>
           <Image
+          loading="lazy"
             className="md:order-1 max-md:size-full max-md:mt-10 flex-1 object-cover"
             src={"/about-image-2.png"}
             width={500}

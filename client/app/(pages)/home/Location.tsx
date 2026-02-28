@@ -31,6 +31,7 @@ const Location = () => {
               className="sm:flex-1 max-sm:space-y-4 space-y-8 max-sm:w-full"
             >
               <Image
+              loading="lazy"
                 src={"/image.png"}
                 width={400}
                 height={400}
@@ -58,6 +59,7 @@ const Location = () => {
       
         </div>
         <Image
+        loading="lazy"
           className="absolute inset-0 size-full object-cover"
           src={"/hero.png"}
           alt="image"

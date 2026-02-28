@@ -11,7 +11,11 @@ export const metadata: Metadata = {
   description: "Find a home for your team"
 }
 
+
+
+
 export default function Home() {
+ 
   return (
     <div className="size-full">
       <Hero/>
