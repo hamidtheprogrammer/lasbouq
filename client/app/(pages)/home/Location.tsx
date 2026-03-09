@@ -15,7 +15,7 @@ const Location = () => {
           </div>
           <Link
             className={`h-fit group border border-foreground relative ${styles} before:bg-foreground`}
-            href={"/locations"}
+            href={"/spaces"}
           >
             <p
               className={`relative text-foreground transition-colors duration-500 group-hover:text-white`}

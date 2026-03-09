@@ -1,0 +1,130 @@
+import MembershipCTA from "@/app/(pages)/home/MembershipCTA";
+import Footer from "@/app/(pages)/home/Footer";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Nav from "@/app/UI/components/Navbar";
+import { spaces } from "@/app/seed/seed";
+
+export function generateStaticParams() {
+  return spaces.map((space) => ({
+    slug: space.slug
+  }))
+}
+
+export default async function SpacePage ({params}:{params:any}) {
+
+  const p = await params 
+ 
+  const space = spaces.find((s) => s.slug === p.slug)
+
+  if (!space) return notFound()
+
+  return (
+    <div>
+      <div className="bg-foreground m-3 mb-10 rounded-lg">
+        <Nav />
+      </div>
+      <section className="flex max-md:flex-col px-3 gap-8">
+        <div className="md:sticky md:self-start md:top-3 rounded-lg md:w-[45%] md:h-[calc(100dvh-1.75rem)] max-md:w-full h-70 overflow-hidden">
+          <div className="z-10 absolute text-5xl text-black bg-background font-italiana w-[90%] aspect-video rounded-lg top-3 left-3 p-10 flex items-end">
+            {space && space.title}
+          </div>
+          <Image
+            width={400}
+            height={400}
+            alt="image"
+            src={"/about-image-1.png"}
+            className="relative z-0 size-full object-cover"
+          />
+        </div>
+        <div className="flex-1 md:pt-50 space-y-10 md:px-30">
+          <div className="flex gap-12 justify-between items-center w-full  text-sm">
+            Location
+            <p className="text-[1rem] self-end">
+              {space && space.city}, {space && space.country}
+            </p>
+          </div>
+          <hr className="border-dashed" />
+          <div className="mb-16 flex  justify-between items-center w-full gap-12 text-sm">
+            Size
+            <p className="text-[1rem] self-end">
+             {space && space.size} members
+            </p>
+          </div>
+
+          <div className="space-y-5">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Consequuntur neque velit enim nisi veniam ut officiis explicabo
+              labore saepe unde! Qui voluptates, quisquam quas harum soluta
+              temporibus eaque magni consequuntur.
+            </p>
+
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Recusandae autem exercitationem vel voluptate. Incidunt numquam
+              ducimus nostrum mollitia ipsam fugit nemo eius fugiat, sapiente
+              quaerat neque ratione amet omnis facere?
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore,
+              atque voluptas? Libero aperiam hic ad quis aut distinctio,
+              consectetur vel ex, assumenda, fugit maiores. Quia dicta iste ad
+              qui dignissimos!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore,
+              atque voluptas? Libero aperiam hic ad quis aut distinctio,
+              consectetur vel ex, assumenda, fugit maiores. Quia dicta iste ad
+              qui dignissimos!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore,
+              atque voluptas? Libero aperiam hic ad quis aut distinctio,
+              consectetur vel ex, assumenda, fugit maiores. Quia dicta iste ad
+              qui dignissimos!
+            </p>
+          </div>
+          <Image
+            width={400}
+            height={400}
+            alt="image"
+            src={"/about-image-1.png"}
+            className="relative z-0 w-full aspect-video object-cover rounded-lg"
+          />
+          <Image
+            width={400}
+            height={400}
+            alt="image"
+            src={"/about-image-1.png"}
+            className="relative z-0 w-full aspect-video object-cover rounded-lg"
+          />
+          <Image
+            width={400}
+            height={400}
+            alt="image"
+            src={"/about-image-1.png"}
+            className="relative z-0 w-full aspect-video object-cover rounded-lg"
+          />
+          <Image
+            width={400}
+            height={400}
+            alt="image"
+            src={"/about-image-1.png"}
+            className="relative z-0 w-full aspect-video object-cover rounded-lg"
+          />
+          <Image
+            width={400}
+            height={400}
+            alt="image"
+            src={"/about-image-1.png"}
+            className="relative z-0 w-full aspect-video object-cover rounded-lg"
+          />
+        </div>
+      </section>
+      <MembershipCTA />
+      <Footer />
+    </div>
+  );
+};
+

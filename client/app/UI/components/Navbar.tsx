@@ -15,15 +15,15 @@ export const navList = [
 const Nav = () => {
   return (
     <header className="w-full relative flex justify-between items-center z-10 text-background  h-20 px-5 font-extralight">
-      <h1 className="font-italiana font-extrabold text-3xl">LASBOUQ</h1>
+      <h1 className="font-italiana font-extrabold text-3xl mix-blend-difference">LASBOUQ</h1>
       <ul className="flex gap-14 text-[0.85rem] tracking-[0.1rem] max-md:hidden">
         {navList.map((li) => (
           <li key={li.name}>
-            <Link href={li.link}>{li.name}</Link>
+            <Link href={li.link} className="mix-blend-difference">{li.name}</Link>
           </li>
         ))}
       </ul>
-      <Button
+      {/* <Button
         className="max-md:hidden"
         type="link"
         name="Apply Today"
@@ -31,7 +31,7 @@ const Nav = () => {
         colorHover="black"
         backgroundHover="bf_background"
         border
-      />
+      /> */}
       <UIContextProvider>
         <Navbutton />
         <hr className="h-[0.05rem] w-full bg-background absolute left-0 bottom-0" />
