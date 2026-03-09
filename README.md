@@ -49,6 +49,12 @@ See 👉 [System Architecture](docs/system-architecture.md)
 - Benefits section
 - Membership CTA
 - Footer section
+### Spaces
+- Static Filter
+- Static product grid
+### Space detail
+- Detail on workspace
+
 
 ## Planned features
 - homepage
