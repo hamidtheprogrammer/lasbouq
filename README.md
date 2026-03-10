@@ -1,5 +1,8 @@
 # LASBOUQ SPACES
 
+![Last Commit](https://img.shields.io/github/last-commit/hamidtheprogrammer/LASBOUQ)
+![Status](https://img.shields.io/badge/status-work%20in%20progress-yellow)
+
 ## Overview
 A platform for an agency that provides premium workspaces for teams across multiple locations. The platform relies heavily on visual appeal and frequent content updates. It uses static site generation for core pages, ISR for refreshment, and Server-Side Rendering only when justified to optimize performance as content scales.
 
