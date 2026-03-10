@@ -7,6 +7,8 @@ import { spaces } from "@/app/seed/seed";
 
 export function generateStaticParams() {
   return spaces.map((space) => ({
+    country:space.country,
+    city:space.city,
     slug: space.slug
   }))
 }

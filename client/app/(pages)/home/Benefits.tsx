@@ -39,7 +39,7 @@ const Benefits = () => {
           <Image
           loading="lazy"
             className="max-md:size-full max-md:mt-10 flex-1 object-cover"
-            src={"/image.png"}
+            src={"/space-1.png"}
             width={500}
             height={500}
             alt="gym image"

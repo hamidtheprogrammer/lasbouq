@@ -9,7 +9,7 @@ const About = () => {
         <Image
           loading="lazy"
           fetchPriority="auto"
-          src={"/image.png"}
+          src={"/image-1.png"}
           width={500}
           height={500}
           alt="image"

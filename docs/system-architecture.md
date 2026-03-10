@@ -1,6 +1,6 @@
 ## System context diagram
 
-![System Context](images/system-context.png)
+![System Context](images/system-context-diagram.png)
 
 
 All public traffic is served from CDN-cached static assets, content are fetched from CMS for updates during build time or ISR.

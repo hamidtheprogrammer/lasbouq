@@ -1,6 +1,8 @@
 import { styles } from "@/app/UI/components/Button";
 import Image from "next/image";
 import Link from "next/link";
+import { random } from "../(locations)/spaces/page";
+import { spaces } from "@/app/seed/seed";
 
 const Location = () => {
   return (
@@ -25,21 +27,21 @@ const Location = () => {
           </Link>
         </div>
         <ul className="flex flex-wrap gap-10 max-sm:gap-14">
-          {Array.from({ length: 3 }).map((_, idx) => (
+          {spaces.slice(0,3).map((space, idx) => (
             <li
               key={idx}
               className="sm:flex-1 max-sm:space-y-4 space-y-8 max-sm:w-full"
             >
               <Image
               loading="lazy"
-                src={"/image.png"}
+                src={space.images[random()]}
                 width={400}
                 height={400}
                 alt="location-image"
                 className="w-full aspect-video"
               />
               <div className="space-y-2">
-                <h1 className="font-semibold text-xl">Peter Taylor house</h1>
+                <h1 className="font-semibold text-xl">{space.title}</h1>
                 <p className="text-sm max-md:text-xs opacity-70">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Eligendi pariatur ad, soluta odit cum quam itaque dolorum

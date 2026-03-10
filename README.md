@@ -25,22 +25,6 @@ Filters	        Client-side
 ## Architecture Overview
 See 👉 [System Architecture](docs/system-architecture.md)
 
-## Project Phases
-### Phase 1 (current)
-- Static pages only
-- No filtering
-- No backend
-
-### Phase 2
-- Client-side filtering
-- Skeleton loading
-- Performance tuning
-
-### Phase 3
-- Thin API
-- Observability
-- Scaling content
-
 ## Implemented features 
 ### Homepage
 - Hero section

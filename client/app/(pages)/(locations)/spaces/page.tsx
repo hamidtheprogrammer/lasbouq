@@ -5,7 +5,7 @@ import MembershipCTA from "../../home/MembershipCTA";
 import Link from "next/link";
 import { spaces } from "@/app/seed/seed";
 
-function random(){
+export function random(){
   return Math.abs(Math.ceil(Math.random() *4))
 }
 
