@@ -28,25 +28,28 @@ Filters	        Client-side
 ## Architecture Overview
 See 👉 [System Architecture](docs/system-architecture.md)
 
-## Implemented features 
-### Homepage
+## Implemented features
+
+### Homepage (SSG)
 - Hero section
 - About section
 - Locations section
 - Benefits section
 - Membership CTA
 - Footer section
-### Spaces
+
+### Spaces (ISR)
 - Static Filter
 - Static product grid
-### Space detail
+
+### Space detail(ISR)
 - Detail on workspace
+
+### API
+- added revalidate api for content update when cms changes
 
 
 ## Planned features
-- homepage
-- workspaces catalogue page
-- workspace detail page
 - application page
 
 ## Getting started

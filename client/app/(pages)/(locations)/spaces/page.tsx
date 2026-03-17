@@ -3,13 +3,17 @@ import Nav from "@/app/UI/components/Navbar";
 import Footer from "../../home/Footer";
 import MembershipCTA from "../../home/MembershipCTA";
 import Link from "next/link";
-import { spaces } from "@/app/seed/seed";
+import { getSpaces } from "@/app/seed/seed";
+import { images } from "@/app/seed/seed";
 
-export function random(){
-  return Math.abs(Math.ceil(Math.random() *4))
+export const revalidate = 10;
+
+export function random() {
+  return Math.abs(Math.ceil(Math.random() * 4));
 }
 
 const Locations = () => {
+  const spaces = getSpaces();
   return (
     <div>
       <div className="bg-foreground m-3 mb-10 rounded-lg">
@@ -19,6 +23,8 @@ const Locations = () => {
         <Image
           width={400}
           height={400}
+          loading="eager"
+          fetchPriority="high"
           alt="image"
           src={"/about-image-1.png"}
           className="md:sticky md:self-start md:top-3 rounded-lg object-cover md:w-1/3 md:h-[calc(100dvh-1.75rem)] max-md:w-full h-70"
@@ -49,13 +55,19 @@ const Locations = () => {
               <option value="">Paris</option>
               <option value="">New york</option>
             </select>
-            <ul>
-              {spaces.map((space) => (
-                <li key={space.id} className="border-t border-black/20 h-48 py-3">
-                  <Link href={`/spaces/${space.country}/${space.city}/${space.slug}`} className="size-full flex gap-4">
-                    <div className="h-full aspect-video max-sm:w-1/3  rounded-sm overflow-hidden ">
+            <ul className="max-xs:space-y-10">
+              {spaces.map((space:any) => (
+                <li
+                  key={space.id}
+                  className="border-t border-black/20 xs:h-48 py-3"
+                >
+                  <Link
+                    href={`/spaces/${space.country}/${space.city}/${space.slug}`}
+                    className="size-full flex max-xs:flex-col max-xs:gap-8 gap-4"
+                  >
+                    <div className="max-xs:h-70 max-xs:w-full aspect-video max-sm:w-1/3  rounded-sm overflow-hidden ">
                       <Image
-                        src={space.images[random()]}
+                        src={images[space.images[random()]]}
                         width={300}
                         height={300}
                         alt="image"
@@ -64,10 +76,10 @@ const Locations = () => {
                     </div>
                     <div className="flex flex-col justify-between text-foreground">
                       <div>
-                        <h1 className="font-semibold text-xl">
-                          {space.title}
-                        </h1>
-                        <p className="text-sm">{space.city+", "+space.country}, England</p>
+                        <h1 className="font-semibold text-xl">{space.title}</h1>
+                        <p className="text-sm">
+                          {space.city + ", " + space.country}, England
+                        </p>
                       </div>
                       <div className="text-sm">{space.size}</div>
                     </div>
