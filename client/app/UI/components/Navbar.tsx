@@ -8,7 +8,7 @@ import MobileNav from "./MobileNav";
 export const navList = [
   { name: "About", link: "/about" },
   { name: "Membership", link: "/membership" },
-  { name: "Locations", link: "/locations" },
+  { name: "Locations", link: "/spaces" },
   { name: "Support", link: "/support" },
 ];
 
@@ -31,7 +31,7 @@ const Nav = () => {
         ))}
       </ul>
       <Link
-        className={`h-fit group border border-background relative ${styles} before:bg-background`}
+        className={`max-md:hidden h-fit group border border-background relative ${styles} before:bg-background`}
         href={"/spaces"}
       >
         <p

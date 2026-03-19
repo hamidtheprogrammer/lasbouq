@@ -8,22 +8,20 @@ import Footer from "./(pages)/home/Footer";
 
 export const metadata: Metadata = {
   title: "Home | Lasbouq",
-  description: "Find a home for your team"
-}
+  description: "Find a home for your team",
+};
 
-
-
+export const dynamic = "force-static";
 
 export default function Home() {
- 
   return (
     <div className="size-full">
-      <Hero/>
-      <About/>
-      <Location/>
-      <Benefits/>
-      <MembershipCTA/>
-      <Footer/>
+      <Hero />
+      <About />
+      <Location />
+      <Benefits />
+      <MembershipCTA />
+      <Footer />
     </div>
   );
 }

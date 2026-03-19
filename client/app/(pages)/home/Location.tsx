@@ -2,7 +2,10 @@ import { styles } from "@/app/UI/components/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { random } from "../(locations)/spaces/page";
-import { spaces } from "@/app/seed/seed";
+import { getSpaces } from "@/app/seed/seed";
+import { images } from "@/app/seed/seed";
+
+const spaces = getSpaces()
 
 const Location = () => {
   return (
@@ -27,18 +30,18 @@ const Location = () => {
           </Link>
         </div>
         <ul className="flex flex-wrap gap-10 max-sm:gap-14">
-          {spaces.slice(0,3).map((space, idx) => (
+          {spaces.slice(0,3).map((space:any, idx:number) => (
             <li
               key={idx}
               className="sm:flex-1 max-sm:space-y-4 space-y-8 max-sm:w-full"
             >
               <Image
               loading="lazy"
-                src={space.images[random()]}
+                src={images[space.images[random()]]}
                 width={400}
                 height={400}
                 alt="location-image"
-                className="w-full aspect-video"
+                className="w-full aspect-video object-cover"
               />
               <div className="space-y-2">
                 <h1 className="font-semibold text-xl">{space.title}</h1>
