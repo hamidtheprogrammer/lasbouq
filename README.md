@@ -50,7 +50,9 @@ See 👉 [System Architecture](docs/system-architecture.md)
 
 
 ## Planned features
+- Implement sanity cms (in progress)
 - application page
+- About page
 
 ## Getting started
 
