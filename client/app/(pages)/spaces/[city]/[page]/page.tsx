@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Nav from "@/app/UI/components/Navbar";
-import Footer from "../../home/Footer";
-import MembershipCTA from "../../home/MembershipCTA";
+import Footer from "../../../home/Footer";
+import MembershipCTA from "../../../home/MembershipCTA";
 import Link from "next/link";
 import { getSpaces } from "@/app/seed/seed";
 import { images } from "@/app/seed/seed";
+import Filter from "../../Filter";
 
 export const revalidate = 10;
 
@@ -12,8 +13,36 @@ export function random() {
   return Math.abs(Math.ceil(Math.random() * 4));
 }
 
-const Locations = () => {
+export default async function Locations({ params }: { params: any }) {
   const spaces = getSpaces();
+
+  const p = await params
+
+  const city = p.city;
+  const page = p.page;
+
+  const validCities = ["london", "new york", "paris"]
+
+
+    const chunk = 6;
+  
+
+  function filter() {
+    let newSpaces = [...spaces]
+    let pages=Math.ceil(spaces.length/chunk);
+    if (validCities.includes(city.toLowerCase())) {
+      newSpaces= spaces.filter((space: any) => space.city.toLowerCase() === city);
+      pages = Math.ceil(newSpaces.length/chunk)
+      
+    }
+
+    if(Number(page)){
+      return {spaces:newSpaces.slice((page-1)*chunk,(page * chunk)), pages}
+    }
+
+    return {spaces, pages};
+  }
+
   return (
     <div>
       <div className="bg-foreground m-3 mb-10 rounded-lg">
@@ -45,24 +74,15 @@ const Locations = () => {
               working.
             </p>
           </section>
-          <section className="flex flex-col">
-            <select
-              name="location"
-              className="sticky top-3 bg-foreground text-background focus:outline-0 rounded-full p-2 text-sm mb-4"
-            >
-              <option value="">All locations</option>
-              <option value="">London</option>
-              <option value="">Paris</option>
-              <option value="">New york</option>
-            </select>
+          <Filter  pages={filter().pages}>
             <ul className="max-xs:space-y-10">
-              {spaces.map((space:any) => (
+              {filter().spaces.map((space: any) => (
                 <li
                   key={space.id}
                   className="border-t border-black/20 xs:h-48 py-3"
                 >
                   <Link
-                    href={`/spaces/${space.country}/${space.city}/${space.slug}`}
+                    href={`/spaces/${space.city}/pagenumber/${space.slug}`}
                     className="size-full flex max-xs:flex-col max-xs:gap-8 gap-4"
                   >
                     <div className="max-xs:h-70 max-xs:w-full aspect-video max-sm:w-1/3  rounded-sm overflow-hidden ">
@@ -87,13 +107,11 @@ const Locations = () => {
                 </li>
               ))}
             </ul>
-          </section>
+          </Filter>
         </div>
       </section>
       <MembershipCTA />
       <Footer />
     </div>
   );
-};
-
-export default Locations;
+}
