@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 
 const Filter = ({ children, pages }: { children: ReactNode; pages: number }) => {

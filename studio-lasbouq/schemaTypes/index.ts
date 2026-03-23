@@ -1,1 +1,4 @@
-export const schemaTypes = []
+import {spaceType} from './spaceType'
+
+export const schemaTypes = [spaceType]
+
