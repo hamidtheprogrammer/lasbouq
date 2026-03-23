@@ -1,7 +1,7 @@
 import { styles } from "@/app/UI/components/Button";
 import Image from "next/image";
 import Link from "next/link";
-import { random } from "../(locations)/spaces/page";
+import { random } from "../spaces/[city]/[page]/page";
 import { getSpaces } from "@/app/seed/seed";
 import { images } from "@/app/seed/seed";
 
