@@ -3,27 +3,38 @@ import Footer from "@/app/(pages)/home/Footer";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Nav from "@/app/UI/components/Navbar";
-import { getSpaces, images } from "@/app/seed/seed";
+import { images } from "@/app/seed/seed";
+import { client } from "@/app/sanity/client";
 
 export const revalidate = 10;
 
-const spaces = getSpaces();
-
-export function generateStaticParams() {
-  return spaces.map((space:any) => ({
-    country:space.country,
-    city:space.city,
-    slug: space.slug
-  }))
+export async function generateStaticParams() {
+  const spaces = await client.fetch(`*[_type == "space"]{title,
+    slug,
+    city,
+    country,
+    capacity,
+    images}`);
+  return spaces.map((space: any) => ({
+    country: space.country,
+    city: space.city,
+    slug: space.slug.current,
+  }));
 }
 
-export default async function SpacePage ({params}:{params:any}) {
+export default async function SpacePage({ params }: { params: any }) {
+  const p = await params;
 
-  const p = await params 
- 
-  const space = spaces.find((s:any) => s.slug === p.slug)
+  const query = `*[_type == "space" && lower(slug.current) == $slug][0]{title,
+    slug,
+    city,
+    country,
+    capacity,
+    images}`;
 
-  if (!space) return notFound()
+  const space = await client.fetch(query, { slug: p.slug });
+
+  if (!space) return notFound();
 
   return (
     <div>
@@ -39,6 +50,8 @@ export default async function SpacePage ({params}:{params:any}) {
             width={400}
             height={400}
             alt="image"
+            loading="eager"
+            fetchPriority="high"
             src={"/about-image-1.png"}
             className="relative z-0 size-full object-cover"
           />
@@ -54,7 +67,7 @@ export default async function SpacePage ({params}:{params:any}) {
           <div className="mb-16 flex  justify-between items-center w-full gap-12 text-sm">
             Size
             <p className="text-[1rem] self-end">
-             {space && space.size} members
+              {space && space.capacity} members
             </p>
           </div>
 
@@ -91,14 +104,14 @@ export default async function SpacePage ({params}:{params:any}) {
               qui dignissimos!
             </p>
           </div>
-          {space.images.map((idx:number)=>(
+          {space.images.map((idx: number) => (
             <Image
-            width={400}
-            height={400}
-            alt="image"
-            src={images[idx]}
-            className="relative z-0 w-full aspect-video object-cover rounded-lg"
-          />
+              width={400}
+              height={400}
+              alt="image"
+              src={images[idx]}
+              className="relative z-0 w-full aspect-video object-cover rounded-lg"
+            />
           ))}
         </div>
       </section>
@@ -106,5 +119,4 @@ export default async function SpacePage ({params}:{params:any}) {
       <Footer />
     </div>
   );
-};
-
+}

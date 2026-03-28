@@ -17,7 +17,7 @@ export const images = [
 const desc = "lorem ipsum";
 
 
-export function getSpaces() {
+ function getSpaces() {
   const file = fs.readFileSync(
     path.join(process.cwd(), "/app/seed/data.json"),
     "utf8"
