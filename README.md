@@ -4,9 +4,11 @@
 ![Status](https://img.shields.io/badge/status-work%20in%20progress-yellow)
 
 ## Overview
+
 A platform for an agency that provides premium workspaces for teams across multiple locations. The platform relies heavily on visual appeal and frequent content updates. It uses static site generation for core pages, ISR for refreshment, and Server-Side Rendering only when justified to optimize performance as content scales.
 
 ## Business Constraints
+
 - Content-heavy directory
 - SEO critical
 - Must load well on slow networks
@@ -16,6 +18,7 @@ A platform for an agency that provides premium workspaces for teams across multi
 more @ [Product requirement](docs/product-requirement.md)
 
 ## Rendering Strategy
+
 ```
 Page	        Strategy
 Home	        SSG
@@ -26,11 +29,13 @@ Filters	        Client-side
 ```
 
 ## Architecture Overview
+
 See 👉 [System Architecture](docs/system-architecture.md)
 
 ## Implemented features
 
 ### Homepage (SSG)
+
 - Hero section
 - About section
 - Locations section
@@ -39,32 +44,42 @@ See 👉 [System Architecture](docs/system-architecture.md)
 - Footer section
 
 ### Spaces (ISR)
+
 - Static Filter
 - Static product grid
 
 ### Space detail(ISR)
+
 - Detail on workspace
 
 ### API
+
 - added revalidate api for content update when cms changes
 
+### CMS
+
+- Implemented data fetching and pagination with sanity cms 
 
 ## Planned features
-- Implement sanity cms (in progress)
+
 - application page
 - About page
 
 ## Getting started
 
 ### Tech stack
+
 - React 19.2.3
 - Next 16.1.4
 
 ### Prequisites
-- node.js 18.*
+
+- node.js 18.\*
 - npm
+- Sanity cms account. See [How to setup sanity](https://www.sanity.io/organizations/okhvXDjcU/project/a8cmf2n8/getting-started)
 
 ### Installation
+
 ```bash
 # Clone the TEAMHUB repository from GitHub to your local machine
 git clone https://github.com/hamidtheprogrammer/lasbouq.git

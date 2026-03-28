@@ -3,9 +3,9 @@ import Nav from "@/app/UI/components/Navbar";
 import Footer from "../../../home/Footer";
 import MembershipCTA from "../../../home/MembershipCTA";
 import Link from "next/link";
-import { getSpaces } from "@/app/seed/seed";
 import { images } from "@/app/seed/seed";
 import Filter from "../../Filter";
+import { client } from "@/app/sanity/client";
 
 export const revalidate = 10;
 
@@ -14,34 +14,50 @@ export function random() {
 }
 
 export default async function Locations({ params }: { params: any }) {
-  const spaces = getSpaces();
-
-  const p = await params
-
-  const city = p.city;
-  const page = p.page;
-
-  const validCities = ["london", "new york", "paris"]
-
-
+  async function filter() {
     const chunk = 6;
-  
 
-  function filter() {
-    let newSpaces = [...spaces]
-    let pages=Math.ceil(spaces.length/chunk);
-    if (validCities.includes(city.toLowerCase())) {
-      newSpaces= spaces.filter((space: any) => space.city.toLowerCase() === city);
-      pages = Math.ceil(newSpaces.length/chunk)
-      
+    const p = await params;
+    const city = p.city?.toLowerCase();
+    const page = Number(p.page) || 1;
+
+    const validCities = ["london", "new york", "paris"];
+
+    const start = (page - 1) * chunk;
+    const end = page * chunk;
+
+    let query = `*[_type == "space"]`;
+    let countQuery = `count(*[_type == "space"])`;
+
+    //  Apply city filter
+    if (city && validCities.includes(city)) {
+      query = `*[_type == "space" && lower(city) == $city]`;
+      countQuery = `count(*[_type == "space" && lower(city) == $city])`;
     }
 
-    if(Number(page)){
-      return {spaces:newSpaces.slice((page-1)*chunk,(page * chunk)), pages}
-    }
+    //  Pagination slicing
+    query += `[${start}...${end}]{
+    title,
+    slug,
+    city,
+    country,
+    capacity,
+    images
+  }`;
 
-    return {spaces, pages};
+    //  Fetch data + total count
+    const [spaces, total] = await Promise.all([
+      client.fetch(query, { city }),
+      client.fetch(countQuery, { city }),
+    ]);
+
+    const pages = Math.ceil(total / chunk);
+
+    return { spaces, pages };
   }
+
+  const { spaces, pages } = await filter()
+
 
   return (
     <div>
@@ -74,15 +90,15 @@ export default async function Locations({ params }: { params: any }) {
               working.
             </p>
           </section>
-          <Filter  pages={filter().pages}>
+          <Filter pages={pages}>
             <ul className="max-xs:space-y-10">
-              {filter().spaces.map((space: any) => (
+              {spaces.map((space: any) => (
                 <li
                   key={space.id}
                   className="border-t border-black/20 xs:h-48 py-3"
                 >
                   <Link
-                    href={`/spaces/${space.city}/pagenumber/${space.slug}`}
+                    href={`/spaces/${space.city}/pagenumber/${space.slug.current}`}
                     className="size-full flex max-xs:flex-col max-xs:gap-8 gap-4"
                   >
                     <div className="max-xs:h-70 max-xs:w-full aspect-video max-sm:w-1/3  rounded-sm overflow-hidden ">

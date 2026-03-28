@@ -2,10 +2,10 @@ import { styles } from "@/app/UI/components/Button";
 import Image from "next/image";
 import Link from "next/link";
 import { random } from "../spaces/[city]/[page]/page";
-import { getSpaces } from "@/app/seed/seed";
 import { images } from "@/app/seed/seed";
+import { client } from "@/app/sanity/client";
 
-const spaces = getSpaces()
+const spaces = await client.fetch(`*[_type == "space"][0..2]{title,images}`)
 
 const Location = () => {
   return (
