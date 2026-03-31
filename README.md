@@ -58,7 +58,7 @@ See 👉 [System Architecture](docs/system-architecture.md)
 
 ### CMS
 
-- Implemented data fetching and pagination with sanity cms 
+- Implemented data fetching and pagination with sanity cms
 
 ## Planned features
 
@@ -77,6 +77,12 @@ See 👉 [System Architecture](docs/system-architecture.md)
 - node.js 18.\*
 - npm
 - Sanity cms account. See [How to setup sanity](https://www.sanity.io/organizations/okhvXDjcU/project/a8cmf2n8/getting-started)
+
+### Environment variables
+
+```bash
+SANITY_API_TOKEN=
+```
 
 ### Installation
 

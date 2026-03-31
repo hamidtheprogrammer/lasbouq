@@ -5,6 +5,8 @@ import Image from "next/image";
 import Nav from "@/app/UI/components/Navbar";
 import { images } from "@/app/seed/seed";
 import { client } from "@/app/sanity/client";
+import { normalizeSpace } from "@/app/utils/validateSchema";
+import SpaceFetchFail from "@/app/UI/components/SpaceFetchFail";
 
 export const revalidate = 10;
 
@@ -32,9 +34,17 @@ export default async function SpacePage({ params }: { params: any }) {
     capacity,
     images}`;
 
-  const space = await client.fetch(query, { slug: p.slug });
+  const space = normalizeSpace(await client.fetch(query, { slug: p.slug }));
 
-  if (!space) return notFound();
+  if (!space)
+    return (
+      <>
+        <div className="bg-foreground m-3 mb-10 rounded-lg">
+          <Nav />
+        </div>
+        <SpaceFetchFail /> <Footer />
+      </>
+    );
 
   return (
     <div>
@@ -109,6 +119,7 @@ export default async function SpacePage({ params }: { params: any }) {
               width={400}
               height={400}
               alt="image"
+              loading="lazy"
               src={images[idx]}
               className="relative z-0 w-full aspect-video object-cover rounded-lg"
             />

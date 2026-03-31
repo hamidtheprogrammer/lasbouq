@@ -4,8 +4,12 @@ import Link from "next/link";
 import { random } from "../spaces/[city]/[page]/page";
 import { images } from "@/app/seed/seed";
 import { client } from "@/app/sanity/client";
+import { normalizeSpace } from "@/app/utils/validateSchema";
 
-const spaces = await client.fetch(`*[_type == "space"][0..2]{title,images}`)
+const data = await client.fetch(`*[_type == "space"][0..2]{title,slug,images}`);
+
+const spaces = data.map(normalizeSpace);
+
 
 const Location = () => {
   return (
@@ -20,7 +24,7 @@ const Location = () => {
           </div>
           <Link
             className={`h-fit group border border-foreground relative ${styles} before:bg-foreground`}
-            href={"/spaces"}
+            href={"/spaces/city/1"}
           >
             <p
               className={`relative text-foreground transition-colors duration-500 group-hover:text-white`}
@@ -30,41 +34,69 @@ const Location = () => {
           </Link>
         </div>
         <ul className="flex flex-wrap gap-10 max-sm:gap-14">
-          {spaces.slice(0,3).map((space:any, idx:number) => (
-            <li
-              key={idx}
-              className="sm:flex-1 max-sm:space-y-4 space-y-8 max-sm:w-full"
-            >
-              <Image
-              loading="lazy"
-                src={images[space.images[random()]]}
-                width={400}
-                height={400}
-                alt="location-image"
-                className="w-full aspect-video object-cover"
-              />
-              <div className="space-y-2">
-                <h1 className="font-semibold text-xl">{space.title}</h1>
-                <p className="text-sm max-md:text-xs opacity-70">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Eligendi pariatur ad, soluta odit cum quam itaque dolorum
-                  dolorem
-                </p>
-              </div>
-              <Link className="text-sm hover:scale-130" href={"/"}>
-                View ⇒
-              </Link>
-            </li>
+          {spaces.slice(0, 3).map((space: any, idx: number) => (
+            <>
+              {space === null ? (
+                <li
+                  key={idx}
+                  className="sm:flex-1 max-sm:space-y-4 space-y-8 max-sm:w-full"
+                >
+                  <Image
+                    loading="lazy"
+                    src={"/icon.png"}
+                    width={400}
+                    height={400}
+                    alt="location-image"
+                    className="w-full aspect-video object-cover"
+                  />
+                  <div className="space-y-2">
+                    <h1 className="font-semibold text-xl">
+                      {"Failed to fetch"}
+                    </h1>
+                    <p className="text-sm max-md:text-xs opacity-70">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Eligendi pariatur ad, soluta odit cum quam itaque dolorum
+                      dolorem
+                    </p>
+                  </div>
+                  <Link className="text-sm hover:scale-130" href={"/"}>
+                    View ⇒
+                  </Link>
+                </li>
+              ) : (
+                <li
+                  key={idx}
+                  className="sm:flex-1 max-sm:space-y-4 space-y-8 max-sm:w-full"
+                >
+                  <Image
+                    loading="lazy"
+                    src={images[space.images[random()]]}
+                    width={400}
+                    height={400}
+                    alt="location-image"
+                    className="w-full aspect-video object-cover"
+                  />
+                  <div className="space-y-2">
+                    <h1 className="font-semibold text-xl">{space.title}</h1>
+                    <p className="text-sm max-md:text-xs opacity-70">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Eligendi pariatur ad, soluta odit cum quam itaque dolorum
+                      dolorem
+                    </p>
+                  </div>
+                  <Link className="text-sm hover:scale-130" href={"/"}>
+                    View ⇒
+                  </Link>
+                </li>
+              )}
+            </>
           ))}
-      
         </ul>
       </section>
       <section className="relative h-screen">
-        <div className="relative z-10 h-20 w-full rounded-b-2xl bg-background">
-      
-        </div>
+        <div className="relative z-10 h-20 w-full rounded-b-2xl bg-background"></div>
         <Image
-        loading="lazy"
+          loading="lazy"
           className="absolute inset-0 size-full object-cover"
           src={"/hero.png"}
           alt="image"
@@ -72,9 +104,7 @@ const Location = () => {
           height={1000}
         />
         <div className="inset-0 size-full absolute bg-black/40"></div>
-        <div className="absolute bottom-0 left-0 z-10 h-20 w-full rounded-t-2xl bg-background">
-      
-        </div>
+        <div className="absolute bottom-0 left-0 z-10 h-20 w-full rounded-t-2xl bg-background"></div>
       </section>
     </>
   );

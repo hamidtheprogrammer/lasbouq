@@ -6,8 +6,18 @@ import Link from "next/link";
 import { images } from "@/app/seed/seed";
 import Filter from "../../Filter";
 import { client } from "@/app/sanity/client";
+import { normalizeSpace } from "@/app/utils/validateSchema";
+import { Suspense } from "react";
+import Loading from "./loading";
 
-export const revalidate = 10;
+export const revalidate = 60;
+
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  return [];
+}
+
 
 export function random() {
   return Math.abs(Math.ceil(Math.random() * 4));
@@ -29,13 +39,13 @@ export default async function Locations({ params }: { params: any }) {
     let query = `*[_type == "space"]`;
     let countQuery = `count(*[_type == "space"])`;
 
-    //  Apply city filter
+    
     if (city && validCities.includes(city)) {
       query = `*[_type == "space" && lower(city) == $city]`;
       countQuery = `count(*[_type == "space" && lower(city) == $city])`;
     }
 
-    //  Pagination slicing
+   
     query += `[${start}...${end}]{
     title,
     slug,
@@ -45,21 +55,28 @@ export default async function Locations({ params }: { params: any }) {
     images
   }`;
 
-    //  Fetch data + total count
-    const [spaces, total] = await Promise.all([
+  
+    const [data, total] = await Promise.all([
       client.fetch(query, { city }),
       client.fetch(countQuery, { city }),
     ]);
 
     const pages = Math.ceil(total / chunk);
+    console.log("CMS triggered")
 
-    return { spaces, pages };
+    return { data, pages };
   }
 
-  const { spaces, pages } = await filter()
+  const { data, pages } = await filter()
+
+
+
+  const spaces = data.map(normalizeSpace)
+
 
 
   return (
+    <Suspense fallback={<Loading/>}>
     <div>
       <div className="bg-foreground m-3 mb-10 rounded-lg">
         <Nav />
@@ -92,8 +109,9 @@ export default async function Locations({ params }: { params: any }) {
           </section>
           <Filter pages={pages}>
             <ul className="max-xs:space-y-10">
-              {spaces.map((space: any) => (
-                <li
+              {spaces.map((space: any, idx:number) => (
+               <>
+               {space !== null ?  <li
                   key={space.id}
                   className="border-t border-black/20 xs:h-48 py-3"
                 >
@@ -107,6 +125,7 @@ export default async function Locations({ params }: { params: any }) {
                         width={300}
                         height={300}
                         alt="image"
+                        loading="eager"
                         className="size-full object-cover"
                       />
                     </div>
@@ -120,7 +139,35 @@ export default async function Locations({ params }: { params: any }) {
                       <div className="text-sm">{space.size}</div>
                     </div>
                   </Link>
-                </li>
+                </li>: <li
+                  key={idx}
+                  className="border-t border-black/20 xs:h-48 py-3"
+                >
+                  <div
+                    className="size-full flex max-xs:flex-col max-xs:gap-8 gap-4"
+                  >
+                    <div className="max-xs:h-70 max-xs:w-full aspect-video max-sm:w-1/3  rounded-sm overflow-hidden ">
+                      <Image
+                        src={"/icon.png"}
+                        width={300}
+                        height={300}
+                        loading="eager"
+                        alt="image"
+                        className="size-full object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-between text-foreground">
+                      <div>
+                        <h1 className="font-semibold text-xl">{"Failed to fetch"}</h1>
+                        <p className="text-sm">
+                          Failed to fetch
+                        </p>
+                      </div>
+                      <div className="text-sm">{"Failed to fetch"}</div>
+                    </div>
+                  </div>
+                </li>}
+               </>
               ))}
             </ul>
           </Filter>
@@ -129,5 +176,6 @@ export default async function Locations({ params }: { params: any }) {
       <MembershipCTA />
       <Footer />
     </div>
+    </Suspense>
   );
 }

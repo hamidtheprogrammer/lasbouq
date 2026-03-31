@@ -46,7 +46,7 @@ const About = () => {
               test-id="story-btn"
               className={`relative text-white transition-colors duration-500`}
             >
-              Our Story
+              Apply
             </p>
           </Link>
         </div>
