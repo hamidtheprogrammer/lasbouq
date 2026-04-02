@@ -3,6 +3,7 @@ import React from "react";
 import MembershipCTA from "../home/MembershipCTA";
 import Footer from "../home/Footer";
 import About from "../home/About";
+import RUMInit from "@/app/UI/components/RUMinit";
 
 const page = () => {
   return (
@@ -26,7 +27,7 @@ const page = () => {
         </p>
       </div>
       <h1 className="text-9xl font-italiana max-sm:text-5xl">LASBOUQ</h1>
-      <hr className="max-sm:mb-10"/>
+      <hr className="max-sm:mb-10" />
       <MembershipCTA />
       <Footer />
     </div>

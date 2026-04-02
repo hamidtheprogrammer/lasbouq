@@ -18,7 +18,7 @@ const MembershipCTA = () => {
       </p>
       <Link
         className={`group relative ${styles} bg-[#A37A4B] before:bg-black`}
-        href={"/apply"}
+        href={"/membership"}
       >
         <p
           className={`capitalize relative text-background transition-colors duration-500 group-hover:text-white`}
