@@ -82,6 +82,7 @@ See 👉 [System Architecture](docs/system-architecture.md)
 
 ```bash
 SANITY_API_TOKEN=
+SENTRY_AUTH_TOKEN=
 ```
 
 ### Installation

@@ -32,7 +32,7 @@ const Nav = () => {
       </ul>
       <Link
         className={`max-md:hidden h-fit group border border-background relative ${styles} before:bg-background`}
-        href={"/spaces"}
+        href={"/membership"}
       >
         <p
           className={`relative text-background transition-colors duration-500 group-hover:text-foreground`}
