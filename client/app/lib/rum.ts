@@ -16,16 +16,22 @@ export function initRUM() {
 
     navigator.sendBeacon("/api/rum", JSON.stringify(data));
 
+    const info = {
+      level: "info" as Sentry.SeverityLevel,
+      extra: data,
+      tags: {
+        metric: metric.name,
+        route: data.route,
+        device: data.device,
+      },
+    };
+
     if (metric.name === "LCP" && metric.value > 2500) {
-      Sentry.captureMessage("web-vital", {
-        level: "info",
-        extra: data,
-        tags: {
-          metric: metric.name,
-          route: data.route,
-          device: data.device,
-        },
-      });
+      Sentry.captureMessage("web-vital", info);
+    } else if (metric.name === "INP" && metric.value > 200) {
+      Sentry.captureMessage("web-vital", info);
+    } else if (metric.name === "CLS" && metric.value > 0.1) {
+      Sentry.captureMessage("web-vital", info);
     }
   };
 
