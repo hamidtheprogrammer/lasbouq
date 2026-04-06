@@ -9,7 +9,7 @@ export const navList = [
   { name: "About", link: "/about" },
   { name: "Membership", link: "/membership" },
   { name: "Locations", link: "/spaces/city/1" },
-  { name: "Support", link: "/support" },
+  // { name: "Support", link: "/support" },
 ];
 
 const Nav = () => {

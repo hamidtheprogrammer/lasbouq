@@ -29,7 +29,7 @@ const Hero = () => {
           </p>
           <Link
             className={`group relative ${styles} bg-[#A37A4B] before:bg-background`}
-            href={"/apply"}
+            href={"/membership"}
           >
             <p
               className={`relative text-white transition-colors duration-500 group-hover:text-black`}

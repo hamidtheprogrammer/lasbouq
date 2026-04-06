@@ -26,6 +26,7 @@ Locations	    SSG
 City pages	    ISR
 Space details	ISR
 Filters	        Client-side
+Applicationform Client-side
 ```
 
 ## Architecture Overview
@@ -52,6 +53,14 @@ See 👉 [System Architecture](docs/system-architecture.md)
 
 - Detail on workspace
 
+### Application page
+
+- Application form
+
+### About page
+
+- about
+
 ### API
 
 - added revalidate api for content update when cms changes
@@ -62,8 +71,7 @@ See 👉 [System Architecture](docs/system-architecture.md)
 
 ## Planned features
 
-- application page
-- About page
+All planned features implemented
 
 ## Getting started
 
@@ -77,6 +85,7 @@ See 👉 [System Architecture](docs/system-architecture.md)
 - node.js 18.\*
 - npm
 - Sanity cms account. See [How to setup sanity](https://www.sanity.io/organizations/okhvXDjcU/project/a8cmf2n8/getting-started)
+- Sentry account for error logging and real user monitoring See [How to setup Sentry](https://docs.sentry.io/product/releases/setup/)
 
 ### Environment variables
 

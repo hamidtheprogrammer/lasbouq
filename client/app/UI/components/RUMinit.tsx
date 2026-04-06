@@ -6,6 +6,7 @@ import * as Sentry from "@sentry/nextjs";
 
 export default function RUMInit() {
   useEffect(() => {
+    if(process.env.NODE_ENV === "development") return;
     initRUM();
     Sentry.setContext("app", {
     route: window.location.pathname,

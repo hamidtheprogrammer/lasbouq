@@ -34,7 +34,7 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Lasbouq Workspace Agency",
-    url: "hhttp://localhost:3000",
+    url: "http://localhost:3000",
   },
 ];
 
@@ -52,7 +52,7 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
-        <RUMInit/>
+        {/* <RUMInit/> */}
         {children}
       </body>
     </html>
