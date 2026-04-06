@@ -9,7 +9,7 @@ export const navList = [
   { name: "About", link: "/about" },
   { name: "Membership", link: "/membership" },
   { name: "Locations", link: "/spaces/city/1" },
-  { name: "Support", link: "/support" },
+  // { name: "Support", link: "/support" },
 ];
 
 const Nav = () => {
@@ -32,7 +32,7 @@ const Nav = () => {
       </ul>
       <Link
         className={`max-md:hidden h-fit group border border-background relative ${styles} before:bg-background`}
-        href={"/spaces"}
+        href={"/membership"}
       >
         <p
           className={`relative text-background transition-colors duration-500 group-hover:text-foreground`}
