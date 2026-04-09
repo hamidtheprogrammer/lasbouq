@@ -1,6 +1,6 @@
 import z from "zod";
 
-const SpaceSchema = z.object({
+export const SpaceSchema = z.object({
   title: z.string(),
   slug: z.object({ _type: z.string(), current: z.string() }),
   description: z.string().optional(),

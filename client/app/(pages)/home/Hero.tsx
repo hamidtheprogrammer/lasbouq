@@ -31,11 +31,11 @@ const Hero = () => {
             className={`group relative ${styles} bg-[#A37A4B] before:bg-background`}
             href={"/membership"}
           >
-            <p
+            <span
               className={`relative text-white transition-colors duration-500 group-hover:text-black`}
             >
               Apply for membership
-            </p>
+            </span>
           </Link>
         </aside>
         <div className="max-sm:text-center max-sm:size-full max-sm:flex max-sm:flex-col max-sm:justify-center max-sm:items-center sm:absolute sm:bottom-5 font-italiana font-bold capitalize md:w-[58rem]">
@@ -49,11 +49,11 @@ const Hero = () => {
             className={`sm:hidden max-md:mt-7 group relative ${styles} bg-[#A37A4B] before:bg-background`}
             href={"/apply"}
           >
-            <p
+            <span
               className={`relative text-white transition-colors duration-500 group-hover:text-black`}
             >
               Apply for membership
-            </p>
+            </span>
           </Link>
         </div>
       </div>

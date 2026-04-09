@@ -1,9 +1,13 @@
 import Nav from "@/app/UI/components/Navbar";
-import React from "react";
 import MembershipCTA from "../home/MembershipCTA";
 import Footer from "../home/Footer";
 import About from "../home/About";
-import RUMInit from "@/app/UI/components/RUMinit";
+import { Metadata } from "next";
+
+export const metadata:Metadata = {
+    title:"About | Lasbouq",
+    description:"About us"
+}
 
 const page = () => {
   return (

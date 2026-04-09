@@ -1,16 +1,23 @@
 "use client";
 import { ReactNode, useState } from "react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter, useParams, useSearchParams } from "next/navigation";
 
-const Filter = ({ children, pages }: { children: ReactNode; pages: number }) => {
+const Filter = ({
+  children,
+  pages,
+}: {
+  children: ReactNode;
+  pages: number;
+}) => {
   const [filter, setFilter] = useState<{ page: number; city: string }>({
     page: 1,
     city: "city",
   });
 
   const params = useParams();
+  const query = useSearchParams();
   const city = params.city;
-  const page = Number(params.page)
+  const page = Number(query.get("page") ?? 1);
 
   const router = useRouter();
 
@@ -21,7 +28,7 @@ const Filter = ({ children, pages }: { children: ReactNode; pages: number }) => 
         name="location"
         className="sticky top-3 bg-foreground text-background focus:outline-0 rounded-full p-2 text-sm mb-4"
         onChange={(e) => {
-          const newFilter = { city:e.target.value,page:1};
+          const newFilter = { city: e.target.value, page: 1 };
           setFilter(newFilter);
           router.push(`/spaces/${newFilter.city}/${newFilter.page}`, {
             scroll: false,
@@ -37,13 +44,13 @@ const Filter = ({ children, pages }: { children: ReactNode; pages: number }) => 
       <div className="sticky bottom-5 text-white w-full flex justify-center gap-4  bg-foreground rounded-full px-2 text-sm">
         {Array.from({ length: pages }).map((_, idx) => (
           <p
-          key={idx}
+            key={idx}
             onClick={(e) => {
               const newFilter = { ...filter };
               newFilter.page = idx + 1;
               newFilter.city = city as string;
               setFilter(newFilter);
-              router.push(`/spaces/${newFilter.city}/${newFilter.page}`, {
+              router.push(`/spaces/${newFilter.city}?page=${newFilter.page}`, {
                 scroll: false,
               });
             }}

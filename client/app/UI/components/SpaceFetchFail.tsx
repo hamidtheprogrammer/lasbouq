@@ -18,11 +18,11 @@ const SpaceFetchFail = () => {
         className={`group relative ${styles} bg-[#A37A4B] before:bg-black`}
         href={"/contact"}
       >
-        <p
+        <span
           className={`capitalize relative text-background transition-colors duration-500 group-hover:text-white`}
         >
           Contact us
-        </p>
+        </span>
       </Link>
     </section>
   );
