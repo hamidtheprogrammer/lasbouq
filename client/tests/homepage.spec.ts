@@ -26,7 +26,7 @@ test.describe("Desktop", () => {
 
     await storyButton.click();
 
-    expect(page).toHaveURL("/about");
+    await expect(page).toHaveURL("/about");
   });
 
   test("view locations link", async ({ page }) => {

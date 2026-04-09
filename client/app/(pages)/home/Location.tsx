@@ -1,7 +1,7 @@
 import { styles } from "@/app/UI/components/Button";
 import Image from "next/image";
 import Link from "next/link";
-import { random } from "../spaces/[city]/[page]/page";
+import { random } from "../spaces/[city]/page";
 import { images } from "@/app/seed/seed";
 import { client } from "@/app/sanity/client";
 import { normalizeSpace } from "@/app/utils/validateSchema";
@@ -24,7 +24,7 @@ const Location = () => {
           </div>
           <Link
             className={`h-fit group border border-foreground relative ${styles} before:bg-foreground`}
-            href={"/spaces/city/1"}
+            href={"/spaces/city?page=1"}
           >
             <p
               className={`relative text-foreground transition-colors duration-500 group-hover:text-white`}

@@ -43,12 +43,12 @@ const About = () => {
             className={`group relative ${styles} bg-[#A37A4B] before:bg-black`}
             href={"/apply"}
           >
-            <p
+            <span
               test-id="story-btn"
               className={`relative text-white transition-colors duration-500`}
             >
               Apply
-            </p>
+            </span>
           </Link>
         </div>
         <div className="w-full max-sm:h-fit max-md:h-80 flex max-sm:flex-col max-md:gap-5 md:flex-row md:justify-end">
