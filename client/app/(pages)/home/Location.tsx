@@ -1,7 +1,7 @@
 import { styles } from "@/app/UI/components/Button";
 import Image from "next/image";
 import Link from "next/link";
-import { random } from "../spaces/[city]/page";
+import { random } from "../spaces/[city]/page/[PageNumber]/page";
 import { images } from "@/app/seed/seed";
 import { client } from "@/app/sanity/client";
 import { normalizeSpace } from "@/app/utils/validateSchema";
@@ -9,7 +9,6 @@ import { normalizeSpace } from "@/app/utils/validateSchema";
 const data = await client.fetch(`*[_type == "space"][0..2]{title,slug,images}`);
 
 const spaces = data.map(normalizeSpace);
-
 
 const Location = () => {
   return (
@@ -24,16 +23,19 @@ const Location = () => {
           </div>
           <Link
             className={`h-fit group border border-foreground relative ${styles} before:bg-foreground`}
-            href={"/spaces/city?page=1"}
+            href={"/spaces/city/page/1"}
           >
-            <p
+            <span
               className={`relative text-foreground transition-colors duration-500 group-hover:text-white`}
             >
               View our locations
-            </p>
+            </span>
           </Link>
         </div>
-        <ul className="flex flex-wrap gap-10 max-sm:gap-14">
+        <ul
+          data-testid="spaces-grid"
+          className="flex flex-wrap gap-10 max-sm:gap-14"
+        >
           {spaces.slice(0, 3).map((space: any, idx: number) => (
             <>
               {space === null ? (
@@ -59,7 +61,10 @@ const Location = () => {
                       dolorem
                     </p>
                   </div>
-                  <Link className="text-sm hover:scale-130" href={"/"}>
+                  <Link
+                    className="text-sm hover:scale-130"
+                    href={`/spaces/${space.city}/${space.slug}`}
+                  >
                     View ⇒
                   </Link>
                 </li>
@@ -67,6 +72,7 @@ const Location = () => {
                 <li
                   key={idx}
                   className="sm:flex-1 max-sm:space-y-4 space-y-8 max-sm:w-full"
+                  data-testid="space-card"
                 >
                   <Image
                     loading="lazy"

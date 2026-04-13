@@ -77,13 +77,14 @@ const Form = () => {
 
   if (formSubmited)
     return (
-      <div className="max-sm:text-xl max-md:text-2xl max-md:mb-30 text-3xl text-center">
+      <p data-testid="form-submitted" className="max-sm:text-xl max-md:text-2xl max-md:mb-30 text-3xl text-center">
         You have submitted the form.
-      </div>
+      </p>
     );
 
   return (
     <form
+      data-testid="form"
       onSubmit={handleSubmit}
       method="post"
       className="w-full max-w-[35rem] space-y-8"
@@ -94,6 +95,7 @@ const Form = () => {
             First Name
           </label>
           <input
+            id="firstName"
             type="text"
             name="firstName"
             className="w-full px-2 outline-0 text-sm h-10 border border-foreground/50 rounded-md"
@@ -105,6 +107,7 @@ const Form = () => {
             Last Name
           </label>
           <input
+            id="lastName"
             type="text"
             name="lastName"
             className="w-full px-2 outline-0 text-sm h-10 border border-foreground/50 rounded-md"
@@ -117,17 +120,19 @@ const Form = () => {
           Email
         </label>
         <input
-          type="text"
+          id="email"
+          type="email"
           name="email"
           className="w-full px-2 outline-0 text-sm h-10 border border-foreground/50 rounded-md"
           onChange={(e) => handleFormDataChange("email", e)}
         />
       </div>
       <div className="flex flex-col gap-1">
-        <label htmlFor="email" className="text-sm">
+        <label htmlFor="info" className="text-sm">
           Describe yourself and your interest (budget, location, etc.)
         </label>
         <textarea
+          id="info"
           name="info"
           className="w-full p-2 outline-0 text-sm h-30 border border-foreground/50 rounded-md"
           onChange={(e) => handleFormDataChange("info", e)}

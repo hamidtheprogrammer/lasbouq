@@ -1,0 +1,2 @@
+- Route|   screen  |   intent  |   action  |   expected result     |   status
+- /membership    | mobile & desktop | can submit form | input correct form fields and submit | form submitted | ✅

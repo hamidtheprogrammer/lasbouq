@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const About = () => {
-
   return (
     <section className="text-foreground px-5 py-10 mt-38 max-md:mt-20 md:size-full flex gap-10 max-md:flex-col md:justify-between items-center">
       <div className="flex flex-col h-full flex-1 justify-between max-md:w-full max-md:items-center">
@@ -40,14 +39,15 @@ const About = () => {
             doloremque.
           </p>
           <Link
+            data-testid="about-btn"
             className={`group relative ${styles} bg-[#A37A4B] before:bg-black`}
-            href={"/apply"}
+            href={"/about"}
           >
             <span
               test-id="story-btn"
               className={`relative text-white transition-colors duration-500`}
             >
-              Apply
+              About us
             </span>
           </Link>
         </div>

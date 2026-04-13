@@ -25,6 +25,7 @@ export function initRUM() {
         device: data.device,
       },
     };
+    
 
     if (metric.name === "LCP" && metric.value > 2500) {
       Sentry.captureMessage("web-vital", info);

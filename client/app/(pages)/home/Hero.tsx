@@ -28,6 +28,7 @@ const Hero = () => {
             asperiores. Ea, cumque.
           </p>
           <Link
+            data-testid="membership-cta"
             className={`group relative ${styles} bg-[#A37A4B] before:bg-background`}
             href={"/membership"}
           >
@@ -46,8 +47,9 @@ const Hero = () => {
             Home of creative minds
           </h1>
           <Link
+            data-testid="membership-cta-mobile"
             className={`sm:hidden max-md:mt-7 group relative ${styles} bg-[#A37A4B] before:bg-background`}
-            href={"/apply"}
+            href={"/membership"}
           >
             <span
               className={`relative text-white transition-colors duration-500 group-hover:text-black`}
