@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode, useState } from "react";
-import { useRouter, useParams, useSearchParams } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 const Filter = ({
   children,
@@ -15,9 +15,8 @@ const Filter = ({
   });
 
   const params = useParams();
-  const query = useSearchParams();
   const city = params.city;
-  const page = Number(query.get("page") ?? 1);
+  const page = Number(params.page ?? 1);
 
   const router = useRouter();
 
@@ -30,7 +29,7 @@ const Filter = ({
         onChange={(e) => {
           const newFilter = { city: e.target.value, page: 1 };
           setFilter(newFilter);
-          router.push(`/spaces/${newFilter.city}/${newFilter.page}`, {
+          router.push(`/spaces/${newFilter.city}/page/${newFilter.page}`, {
             scroll: false,
           });
         }}
@@ -50,7 +49,7 @@ const Filter = ({
               newFilter.page = idx + 1;
               newFilter.city = city as string;
               setFilter(newFilter);
-              router.push(`/spaces/${newFilter.city}?page=${newFilter.page}`, {
+              router.push(`/spaces/${newFilter.city}/page/${newFilter.page}`, {
                 scroll: false,
               });
             }}

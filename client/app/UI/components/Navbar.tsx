@@ -8,7 +8,7 @@ import MobileNav from "./MobileNav";
 export const navList = [
   { name: "About", link: "/about" },
   { name: "Membership", link: "/membership" },
-  { name: "Locations", link: "/spaces/city/1" },
+  { name: "Locations", link: "/spaces/city/page/1" },
   // { name: "Support", link: "/support" },
 ];
 

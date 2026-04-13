@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Benefits = () => {
   return (
-    <section test-id="benefits" className="px-3">
+    <section data-testid="benefits" className="px-3">
       <aside className="flex justify-center items-center gap-20 max-md:h-[30rem] h-[35rem]">
         <h1 className="font-italiana max-sm:text-2xl max-md:text-3xl text-4xl uppercase max-md:max-w-[19rem] max-w-[25rem] text-balance -translate-y-14">
           One Membership gives you Multiple Experiences
@@ -21,7 +21,7 @@ const Benefits = () => {
             <span
               className={`relative text-foreground transition-colors duration-500 group-hover:text-white`}
             >
-              See below
+              Apply now
             </span>
           </Link>
         </div>

@@ -1,23 +1,19 @@
 import Image from "next/image";
 import Nav from "@/app/UI/components/Navbar";
-import Footer from "../../home/Footer";
-import MembershipCTA from "../../home/MembershipCTA";
+import Footer from "../../../../home/Footer";
+import MembershipCTA from "../../../../home/MembershipCTA";
 import Link from "next/link";
 import { images } from "@/app/seed/seed";
-import Filter from "../Filter";
+import Filter from "../../../Filter";
 import { client } from "@/app/sanity/client";
 import { normalizeSpace } from "@/app/utils/validateSchema";
 import { Suspense } from "react";
-import Loading from "./loading";
+import Loading from "../../loading";
 import { Metadata } from "next";
 
 export const revalidate = 60;
 
 export const dynamicParams = true;
-
-export async function generateStaticParams() {
-  return [];
-}
 
 export function random() {
   return Math.abs(Math.ceil(Math.random() * 4));
@@ -30,19 +26,17 @@ export const metadata: Metadata = {
 
 export default async function Locations({
   params,
-  searchParams,
 }: {
-  params: Promise<{ city: string; }>;
-  searchParams: Promise<{page:string}>;
+  params: Promise<{ city: string, page:string }>;
 }) {
   async function filter() {
     const chunk = 6;
 
     const p = await params;
-    const sP = await searchParams;
+   
 
     const city = p.city?.toLowerCase();
-    const page = Number(sP.page) || 1;
+    const page = Number(p.page) || 1;
 
     const validCities = ["london", "new york", "paris"];
 
@@ -81,7 +75,6 @@ export default async function Locations({
 
   const spaces = data.map(normalizeSpace);
 
-
   return (
     <Suspense fallback={<Loading />}>
       <div>
@@ -115,11 +108,12 @@ export default async function Locations({
               </p>
             </section>
             <Filter pages={pages}>
-              <ul className="max-xs:space-y-10">
+              <ul data-testid="spaces-grid" className="max-xs:space-y-10">
                 {spaces.map((space: any, idx: number) => (
                   <>
                     {space !== null ? (
                       <li
+                        data-testid="space-card"
                         key={space.id}
                         className="border-t border-black/20 xs:h-48 py-3"
                       >
