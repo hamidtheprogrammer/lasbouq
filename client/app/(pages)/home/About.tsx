@@ -15,8 +15,8 @@ const About = () => {
           alt="image"
           className="w-full max-md:order-2 md:max-w-[15rem]"
         />
-        <h1 className="font-italiana text-5xl max-sm:text-4xl md:max-w-64 text-balance max-md:order-1 sm:w-[30rem] max-md:mb-10 max-md:text-center">
-          Platey Ipsum vendeur corea
+        <h1 className="font-italiana text-5xl max-sm:text-4xl md:max-w-50 text-balance max-md:order-1 sm:w-[30rem] max-md:mb-10 max-md:text-center">
+          Spaces built for modern creators
         </h1>
       </div>
       <div className="h-full max-md:hidden md:w-[]">
@@ -33,10 +33,9 @@ const About = () => {
       <div className="md:h-full flex-1 md:w-1/3 flex flex-col justify-between items-center md:items-end">
         <div className="flex flex-col gap-5 text-balance max-md:items-center max-md:mb-10">
           <p className="md:w-[15rem] md:pr-8 max-md:text-center max-md:mt-10">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi
-            expedita iusto ad in sit assumenda quas, est id molestias facere,
-            impedit voluptates, numquam quis! Quasi nam labore fuga molestias
-            doloremque.
+            At Lasbouq, every space is designed with intention, blending
+            functionality, comfort, and community to create an environment where
+            work, wellness, and meaningful connection exist in perfect balance.
           </p>
           <Link
             data-testid="about-btn"

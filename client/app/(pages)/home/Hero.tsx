@@ -22,10 +22,9 @@ const Hero = () => {
       <div className="relative text-background w-full flex-1 p-5">
         <aside className="absolute max-sm:hidden right-5 w-[20rem] flex flex-col gap-4 max-md:top-10">
           <p className="max-md:text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem esse
-            veniam totam libero temporibus consectetur facilis quisquam iure
-            fuga ad reiciendis quis ullam, voluptas eaque neque animi
-            asperiores. Ea, cumque.
+            Access thoughtfully designed workspaces, fully equipped gyms, and
+            curated events across multiple locations, built for individuals and
+            teams who value focus, flexibility, and meaningful connection.
           </p>
           <Link
             data-testid="membership-cta"

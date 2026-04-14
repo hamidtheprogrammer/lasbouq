@@ -4,10 +4,10 @@ import Image from "next/image";
 import Form from "./Form";
 import { Metadata } from "next";
 
-export const metadata:Metadata = {
-    title:"Membership | Lasbouq",
-    description:"Apply for membership"
-}
+export const metadata: Metadata = {
+  title: "Membership | Lasbouq",
+  description: "Apply for membership",
+};
 
 const page = () => {
   return (
@@ -37,8 +37,8 @@ const page = () => {
               </h2>
             </div>
             <p className="max-sm:text-sm max-w-[25rem]">
-              We craft a unique blend of style and functionality, made for
-              working.
+              Join Lasbouq and gain access to spaces built for focus, movement,
+              and connection.
             </p>
           </section>
           <Form />

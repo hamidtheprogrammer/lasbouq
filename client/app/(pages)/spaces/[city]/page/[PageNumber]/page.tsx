@@ -27,13 +27,12 @@ export const metadata: Metadata = {
 export default async function Locations({
   params,
 }: {
-  params: Promise<{ city: string, page:string }>;
+  params: Promise<{ city: string; page: string }>;
 }) {
   async function filter() {
     const chunk = 6;
 
     const p = await params;
-   
 
     const city = p.city?.toLowerCase();
     const page = Number(p.page) || 1;
@@ -103,8 +102,8 @@ export default async function Locations({
                 </h2>
               </div>
               <p className="max-sm:text-sm max-w-[25rem]">
-                We craft a unique blend of style and functionality, made for
-                working.
+                Discover our locations and find spaces built for work, wellness,
+                and community.
               </p>
             </section>
             <Filter pages={pages}>
@@ -137,7 +136,7 @@ export default async function Locations({
                                 {space.title}
                               </h1>
                               <p className="text-sm">
-                                {space.city + ", " + space.country}, England
+                                {space.city + ", " + space.country}
                               </p>
                             </div>
                             <div className="text-sm">{space.size}</div>

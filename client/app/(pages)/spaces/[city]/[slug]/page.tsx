@@ -1,6 +1,5 @@
 import MembershipCTA from "@/app/(pages)/home/MembershipCTA";
 import Footer from "@/app/(pages)/home/Footer";
-import { notFound } from "next/navigation";
 import Image from "next/image";
 import Nav from "@/app/UI/components/Navbar";
 import { images } from "@/app/seed/seed";
@@ -27,8 +26,6 @@ export async function generateStaticParams() {
   }));
 }
 
-let meta: z.infer<typeof SpaceSchema>;
-
 export default async function SpacePage({ params }: { params: any }) {
   const p = await params;
 
@@ -41,8 +38,6 @@ export default async function SpacePage({ params }: { params: any }) {
 
   const space = normalizeSpace(await client.fetch(query, { slug: p.slug }));
 
-  meta = space as z.infer<typeof SpaceSchema>;
-
   if (!space)
     return (
       <>
@@ -53,7 +48,7 @@ export default async function SpacePage({ params }: { params: any }) {
       </>
     );
 
-    // (SEO)  structured data markup for crumblist
+  // (SEO)  structured data markup for crumblist
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -109,10 +104,10 @@ export default async function SpacePage({ params }: { params: any }) {
         }}
       />
       <div>
-        <div className="bg-foreground m-3 mb-10 rounded-lg">
+        <div className="bg-foreground m-3 mb-10 rounded-lg relative z-20">
           <Nav />
         </div>
-        <section className="flex max-md:flex-col px-3 max-md:gap-40 gap-8">
+        <section className="relative flex max-md:flex-col px-3 max-md:gap-40 gap-8">
           <div className="relative max-md:h-[100dvh] md:sticky md:self-start md:top-3 rounded-lg md:w-[45%] md:h-[calc(100dvh-1.75rem)] max-md:w-full h-70 overflow-hidden">
             <div className="z-10 absolute max-sm:text-3xl text-5xl text-black bg-background font-italiana w-[90%] aspect-video rounded-lg max-md:left-1/2 max-md:-translate-x-1/2 top-3 md:left-3 p-10 flex items-end">
               {space && space.title}
@@ -144,35 +139,37 @@ export default async function SpacePage({ params }: { params: any }) {
 
             <div className="space-y-5">
               <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Consequuntur neque velit enim nisi veniam ut officiis explicabo
-                labore saepe unde! Qui voluptates, quisquam quas harum soluta
-                temporibus eaque magni consequuntur.
-              </p>
-
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Recusandae autem exercitationem vel voluptate. Incidunt numquam
-                ducimus nostrum mollitia ipsam fugit nemo eius fugiat, sapiente
-                quaerat neque ratione amet omnis facere?
+                {space.title} in {space.city ?? space.country} is designed to
+                support a balanced and productive experience, offering a refined
+                environment where focus, flexibility, and comfort come together.
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tempore, atque voluptas? Libero aperiam hic ad quis aut
-                distinctio, consectetur vel ex, assumenda, fugit maiores. Quia
-                dicta iste ad qui dignissimos!
+                With capacity for up to {space.capacity} people, the space
+                accommodates both individual work and collaborative sessions,
+                creating a setting that adapts naturally to different working
+                styles throughout the day. Carefully considered layouts, calm
+                interiors, and shared areas make it easy to move between deep
+                concentration and light interaction, while maintaining a steady
+                and uninterrupted flow.
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tempore, atque voluptas? Libero aperiam hic ad quis aut
-                distinctio, consectetur vel ex, assumenda, fugit maiores. Quia
-                dicta iste ad qui dignissimos!
+                Whether you are working independently or alongside a team, the
+                space provides the right conditions to stay engaged and
+                productive. Beyond functionality, {space.title} encourages a
+                more sustainable rhythm of work, where moments of pause and
+                reset are just as accessible as moments of focus. The
+                environment is shaped to support not only output, but also
+                clarity, energy, and consistency over time.
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Tempore, atque voluptas? Libero aperiam hic ad quis aut
-                distinctio, consectetur vel ex, assumenda, fugit maiores. Quia
-                dicta iste ad qui dignissimos!
+                Positioned within {space.city ?? space.country}, the space
+                connects you to a wider network of professionals and
+                opportunities, making it more than just a place to work, but a
+                place to grow, connect, and create meaningful progress. Every
+                detail within {space.title} reflects a commitment to quality and
+                intentional design, ensuring that whether for a few hours or a
+                full day, the experience remains consistent, reliable, and
+                aligned with the way modern work is meant to feel.
               </p>
             </div>
             {space.images.map((idx: number) => (
@@ -195,13 +192,25 @@ export default async function SpacePage({ params }: { params: any }) {
   );
 }
 
-export async function generateMetaData(): Promise<Metadata> {
-  if (!meta) {
+export async function generateMetadata({
+  params,
+}: {
+  params: any;
+}): Promise<Metadata> {
+  const p = await params;
+
+  const query = `*[_type == "space" && lower(slug.current) == $slug][0]{slug,
+    title,
+    city}`;
+
+  const space = normalizeSpace(await client.fetch(query, { slug: p.slug }));
+
+  if (!space) {
     return { title: "Workspace | Lasbouq" };
   }
 
   return {
-    title: meta.title,
-    description: `High-end flexible workspace in ${meta.city}`,
+    title: `${space.title} | Lasbouq`,
+    description: `High-end flexible workspace in ${space.city}`,
   };
 }

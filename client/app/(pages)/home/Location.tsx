@@ -6,19 +6,25 @@ import { images } from "@/app/seed/seed";
 import { client } from "@/app/sanity/client";
 import { normalizeSpace } from "@/app/utils/validateSchema";
 
-const data = await client.fetch(`*[_type == "space"][0..2]{title,slug,images}`);
+const data = await client.fetch(`*[_type == "space"][0..2]{title,city,slug,images}`);
 
 const spaces = data.map(normalizeSpace);
+
+const descriptions = [
+  "Bright, quiet, and built for focus, with calm work zones and space to reset.",
+  "Open, flexible, and energetic, designed for both deep work and collaboration.",
+  "Refined and balanced, offering privacy, comfort, and a steady creative flow.",
+];
 
 const Location = () => {
   return (
     <>
       <section className="px-5 mt-34 md:mb-27 max-sm:mt-20">
-        <div className="mb-12 text-foreground flex max-md:flex-col justify-between items-center space-y-6">
+        <div className="mb-8 text-foreground flex max-md:flex-col justify-between items-center space-y-6">
           <div className="max-md:text-center space-y-1">
             <p className="text-xs tracking-[0.3rem]">OUR LOCATIONS</p>
             <h1 className="font-italiana text-5xl max-sm:text-4xl md:max-w-[30rem] text-balance">
-              Platey Ipsum vendeur corea
+              Explore spaces across locations
             </h1>
           </div>
           <Link
@@ -56,20 +62,13 @@ const Location = () => {
                       {"Failed to fetch"}
                     </h1>
                     <p className="text-sm max-md:text-xs opacity-70">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eligendi pariatur ad, soluta odit cum quam itaque dolorum
-                      dolorem
+                      {descriptions[idx]}
                     </p>
                   </div>
-                  <Link
-                    className="text-sm hover:scale-130"
-                    href={`/spaces/${space.city}/${space.slug}`}
-                  >
-                    View ⇒
-                  </Link>
                 </li>
               ) : (
-                <li
+                <Link
+                  href={`/spaces/${space.city}/${space.slug.current}`}
                   key={idx}
                   className="sm:flex-1 max-sm:space-y-4 space-y-8 max-sm:w-full"
                   data-testid="space-card"
@@ -85,15 +84,11 @@ const Location = () => {
                   <div className="space-y-2">
                     <h1 className="font-semibold text-xl">{space.title}</h1>
                     <p className="text-sm max-md:text-xs opacity-70">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eligendi pariatur ad, soluta odit cum quam itaque dolorum
-                      dolorem
+                      {descriptions[idx]}
                     </p>
                   </div>
-                  <Link className="text-sm hover:scale-130" href={"/"}>
-                    View ⇒
-                  </Link>
-                </li>
+                  <span className="text-sm hover:scale-130">View ⇒</span>
+                </Link>
               )}
             </>
           ))}

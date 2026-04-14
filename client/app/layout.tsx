@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Italiana, Poppins } from "next/font/google";
 import "./globals.css";
-import Footer from "./(pages)/home/Footer";
 import RUMInit from "./UI/components/RUMinit";
 
 const italiana = Italiana({
@@ -45,6 +44,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="6vZFEPb6_9ZFGe-60NuyLYckCeTVZlgnAkaOriX5P7Y"
+        />
+      </head>
       <body className={`${italiana.variable} ${poppins.variable} antialiased`}>
         <script
           type="application/ld+json"
@@ -52,7 +57,7 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
-        {/* <RUMInit/> */}
+        <RUMInit />
         {children}
       </body>
     </html>

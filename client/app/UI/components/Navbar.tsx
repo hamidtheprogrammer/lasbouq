@@ -34,11 +34,11 @@ const Nav = () => {
         className={`max-md:hidden h-fit group border border-background relative ${styles} before:bg-background`}
         href={"/membership"}
       >
-        <p
+        <span
           className={`relative text-background transition-colors duration-500 group-hover:text-foreground`}
         >
           Apply today
-        </p>
+        </span>
       </Link>
       <UIContextProvider>
         <Navbutton />

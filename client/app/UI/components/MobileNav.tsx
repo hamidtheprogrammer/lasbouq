@@ -14,7 +14,7 @@ const MobileNav = () => {
         <Link
           data-test-id="membership-cta-mobile"
           className={`group relative ${styles}`}
-          href={"/apply"}
+          href={"/membership"}
         >
           <p className={`relative text-black`}>Apply for membership</p>
         </Link>
