@@ -4,7 +4,7 @@ import Footer from "../../../../home/Footer";
 import MembershipCTA from "../../../../home/MembershipCTA";
 import Link from "next/link";
 import { images } from "@/app/seed/seed";
-import Filter from "../../../Filter";
+import Filter from "./Filter";
 import { client } from "@/app/sanity/client";
 import { normalizeSpace } from "@/app/utils/validateSchema";
 import { Suspense } from "react";
@@ -34,7 +34,7 @@ export default async function Locations({
 
     const p = await params;
 
-    const city = p.city?.toLowerCase();
+    const city = p.city?.split("_").join(" ").toLowerCase();
     const page = Number(p.page) || 1;
 
     const validCities = ["london", "new york", "paris"];
@@ -65,7 +65,6 @@ export default async function Locations({
     ]);
 
     const pages = Math.ceil(total / chunk);
-    console.log("CMS triggered");
 
     return { data, pages };
   }

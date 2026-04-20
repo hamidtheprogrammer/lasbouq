@@ -25,15 +25,6 @@ The diagrams allow immmediate visibility of performance-critical components, com
 ### Home page
 ![Component Rendering & Delivery Strategy for homepage](images/component-rendering-delivery[home-page].png)
 
-### spaces page
+### spaces page & space detail page 
 Page rendering all available workspaces across different locations. 
 ![Component Rendering & Delivery Strategy for spaces page](images/component-rendering-delivery[spaces].png)
-
-### space detail page 
-Single component page with information about a space, fully server rendered. No diagram needed for this.
-
-## Sequence diagrams for critical pages
-
-## Data & cache flow diagram
-
-## Failure mode table

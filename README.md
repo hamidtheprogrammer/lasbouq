@@ -111,5 +111,10 @@ npm run dev
 ```
 
 ## Tests
-
 [Functional tests](docs/tests/functional/homepage-test.md)
+
+## Performance & scalability
+[Performance](docs/performance/performance.md)
+
+## SEO
+[SEO strategy](docs/performance/SEO.md)

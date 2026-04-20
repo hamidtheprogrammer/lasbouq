@@ -7,6 +7,7 @@ const italiana = Italiana({
   variable: "--font-italiana",
   weight: "400",
   subsets: ["latin"],
+  display:'swap'
 });
 
 const poppins = Poppins({
@@ -57,7 +58,7 @@ export default function RootLayout({
             __html: JSON.stringify(structuredData),
           }}
         />
-        <RUMInit />
+        {/* <RUMInit /> */}
         {children}
       </body>
     </html>

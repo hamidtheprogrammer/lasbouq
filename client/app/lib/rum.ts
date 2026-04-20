@@ -12,8 +12,6 @@ export function initRUM() {
       timestamp: Date.now(),
     };
 
-    console.log("RUM:", data);
-
     navigator.sendBeacon("/api/rum", JSON.stringify(data));
 
     const info = {

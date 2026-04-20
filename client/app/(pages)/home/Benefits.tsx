@@ -16,7 +16,7 @@ const Benefits = () => {
           </p>
           <Link
             className={`size-fit group border border-foreground relative ${styles} before:bg-foreground`}
-            href={"/apply"}
+            href={"/membership"}
           >
             <span
               className={`relative text-foreground transition-colors duration-500 group-hover:text-white`}

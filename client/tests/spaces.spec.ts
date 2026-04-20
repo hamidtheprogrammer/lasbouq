@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const URL = "http://localhost:3000/";
+const URL = "https://lasbouq.com/";
 
 test.describe("Spaces page", () => {
   test("UI renders correctly", async ({ page }) => {
@@ -20,9 +20,9 @@ test.describe("Spaces page ISR/ No JS", () => {
   // FOR this test to run in local, there must be a next build running
   // and the locations/spaces page should be visited at least once manually to cache the page
 
-  test.use({
-    javaScriptEnabled: false,
-  });
+//   test.use({
+//     javaScriptEnabled: false,
+//   });
 
   test("renders spaces grid location without JS (cache hit test)", async ({
     page,

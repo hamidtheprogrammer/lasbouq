@@ -10,8 +10,8 @@ const Hero = () => {
       <Image
         id="hero"
         className="size-full object-cover absolute"
-        width={500}
-        height={500}
+        width={400}
+        height={400}
         alt="background image"
         loading="eager"
         fetchPriority="high"

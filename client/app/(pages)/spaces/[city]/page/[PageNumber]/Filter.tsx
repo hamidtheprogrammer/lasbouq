@@ -16,7 +16,7 @@ const Filter = ({
 
   const params = useParams();
   const city = params.city;
-  const page = Number(params.page ?? 1);
+  const page = Number(params.PageNumber ?? 1);
 
   const router = useRouter();
 
@@ -37,12 +37,12 @@ const Filter = ({
         <option value="all">All locations</option>
         <option value="london">London</option>
         <option value="paris">Paris</option>
-        <option value="new york">New york</option>
+        <option value="new_york">New york</option>
       </select>
       {children}
       <div className="sticky bottom-5 text-white w-full flex justify-center gap-4  bg-foreground rounded-full px-2 text-sm">
         {Array.from({ length: pages }).map((_, idx) => (
-          <p
+          <span
             key={idx}
             onClick={(e) => {
               const newFilter = { ...filter };
@@ -58,7 +58,7 @@ const Filter = ({
             } cursor-pointer size-8 rounded-2 flex justify-center items-center`}
           >
             {idx + 1}
-          </p>
+          </span>
         ))}
       </div>
     </section>
