@@ -31,20 +31,34 @@ The above approach ensures:
 
 ### Current Measurements with web vitals on google search console
 
+#### homepage
 | Device  | LCP | CLS | INP | Status |
 |---------|-----|-----|-----|--------|
 | Desktop | ~1.2s | 0 | <100ms | ✅ |
 | Mobile  | ~1.5s | 0 | <150ms | ✅ |
+
+#### spaces page
+| Device  | LCP | CLS | INP | Status |
+|---------|-----|-----|-----|--------|
+| Desktop | <1.0s | 0 | <100ms | ✅ |
+| Mobile  | ~3.3s | 0.003 | <150ms | 🟡 |
+
+#### spaces detail page
+| Device  | LCP | CLS | INP | Status |
+|---------|-----|-----|-----|--------|
+| Desktop | <1.0s | 0 | <100ms | ✅ |
+| Mobile  | ~2.8s | 0.004 | <150ms | 🟡 |
 
 ## 4. Measurement and observability
 - RUM are collected to observer real world performance insight
 - Google web vitals are used to record baseline performance metric
 - Chrome recorder for measuring asset delivery and code execution sequence to ensure accurate priority allocation
 
-## 5. Changes to performance optimization
+## 5. Recent changes to performance optimization
 
-| Change                                                   | Impact |
-|----------------------------------------------------------|--------|
-| Reduced hero image size (~20kb),reduced font weight variety |mobile LCP improved from ~2.7s → ~1.5s |
+| Change                                                   | Impact | Tradeoffs |
+|----------------------------------------------------------|--------|-----------|
+| Reduced hero image size (~20kb),reduced font weight variety |mobile HOMEPAGE LCP improved from ~2.7s → ~1.5s | less image quality
+| Forced nextjs static rendering on SPACES PAGE due to dynamic rendering behavior | 🟡  | less clean architecture
 
 

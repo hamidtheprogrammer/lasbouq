@@ -6,11 +6,9 @@ import { images } from "@/app/seed/seed";
 import { client } from "@/app/sanity/client";
 import { normalizeSpace } from "@/app/utils/validateSchema";
 import SpaceFetchFail from "@/app/UI/components/SpaceFetchFail";
-import { SpaceSchema } from "@/app/utils/validateSchema";
-import z from "zod";
 import { Metadata } from "next";
 
-export const revalidate = 10;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const spaces = await client.fetch(`*[_type == "space"]{title,
@@ -57,19 +55,19 @@ export default async function SpacePage({ params }: { params: any }) {
         "@type": "ListItem",
         position: 1,
         name: "Spaces",
-        item: "https://atlas.com/spaces",
+        item: "https://lasbouq.com/spaces",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: space.city,
-        item: `https://atlas.com/spaces/${space.city}`,
+        item: `https://lasbouq.com/spaces/${space.city}`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: space.title,
-        item: `https://atlas.com/spaces/${space.city}/${space.slug}`,
+        item: `https://lasbouq.com/spaces/${space.city}/${space.slug}`,
       },
     ],
   };
