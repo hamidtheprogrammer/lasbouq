@@ -1,7 +1,8 @@
-- Route|   screen  |   intent  |   action  |   expected result     |   status
-- /    | mobile & desktop | hero content is visible | lands on homepage | heading and CTA visible | ✅
-- /    | mobile    | see if navs are visible | clicks hamburger menu   | navs visible | ✅
-- /    | mobile & desktop  | about us link works | clicks about us button | about us navigates to about page | ✅
-- /    | mobile & desktop  | locations link works | clicks "view our locations" button | naviigates to locations | ✅
-- /    | mobile & desktop  | benefits section visible | scrolls to benefit section | benefits section visible | ✅
-- /    | mobile & desktop  | cache hit test  | disable js to prevent connection to cms | spaces load without cms (cache hit) | works | ✅
+| Route|   screen  |   intent  |   action  |   expected result     |   status  |
+|------|-----------|-----------|-----------|-----------------------|-----------|
+| /    | mobile & desktop | hero content is visible | lands on homepage | heading and CTA visible | ✅ |
+| /    | mobile    | see if navs are visible | clicks hamburger menu   | navs visible | ✅ |
+| /    | mobile & desktop  | about us link works | clicks about us button | about us navigates to about page | ✅ |
+| /    | mobile & desktop  | locations link works | clicks "view our locations" button | naviigates to locations | ✅ |
+| /    | mobile & desktop  | benefits section visible | scrolls to benefit section | benefits section visible | ✅ |
+| /    | mobile & desktop  | cache hit test  | disable js to prevent connection to cms | spaces load without cms (cache hit) | works | ✅ |
