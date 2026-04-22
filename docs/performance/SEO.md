@@ -6,7 +6,7 @@ Lasbouq is designed for search discoverability by:
 - semantic html elements
 - Clean URL heirarchy
 - Fast load performance
-- Structured data markup (Breadcrumblist & Local business)
+- Structured data markup (Breadcrumblist & Local business) to enhance SEO
 
 # Verification
 - Platform is verified by google

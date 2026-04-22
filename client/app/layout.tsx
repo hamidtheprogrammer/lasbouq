@@ -25,8 +25,8 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Lasbouq Workspace Agency",
-    url: "http://localhost:3000",
-    logo: "http://localhost:3000/icon.png",
+    url: "https://lasbouq.com",
+    logo: "https://lasbouq.com/icon.png",
     description:
       "Premium flexible workspaces for startups, remote teams, and creative professionals.",
   },
@@ -34,7 +34,7 @@ const structuredData = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Lasbouq Workspace Agency",
-    url: "http://localhost:3000",
+    url: "https://lasbouq.com",
   },
 ];
 

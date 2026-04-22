@@ -11,9 +11,11 @@ import { Suspense } from "react";
 import Loading from "../../loading";
 import { Metadata } from "next";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 export const dynamicParams = true;
+
+export const dynamic = "force-static";
 
 export function random() {
   return Math.abs(Math.ceil(Math.random() * 4));
