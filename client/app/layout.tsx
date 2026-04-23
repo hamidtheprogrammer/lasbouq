@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Italiana, Poppins } from "next/font/google";
 import "./globals.css";
-import RUMInit from "./UI/components/RUMinit";
+// import RUMInit from "./UI/components/RUMinit";
 
 const italiana = Italiana({
   variable: "--font-italiana",
