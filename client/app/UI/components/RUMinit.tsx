@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { initRUM } from "@/app/lib/rum";
 import * as Sentry from "@sentry/nextjs";
 
-export default function RUMInit() {
+  function RUMInit() {
   useEffect(() => {
     if(process.env.NODE_ENV === "development") return;
     initRUM();

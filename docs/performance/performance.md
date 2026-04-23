@@ -41,7 +41,7 @@ The above approach ensures:
 | Device  | LCP | CLS | INP | Status |
 |---------|-----|-----|-----|--------|
 | Desktop | <1.0s | 0 | <100ms | ✅ |
-| Mobile  | ~3.3s | 0.003 | <150ms | 🟡 |
+| Mobile  | ~2.0s | 0.003 | <150ms | ✅ |
 
 #### spaces detail page
 | Device  | LCP | CLS | INP | Status |
@@ -59,6 +59,6 @@ The above approach ensures:
 | Change                                                   | Impact | Tradeoffs |
 |----------------------------------------------------------|--------|-----------|
 | Reduced hero image size (~20kb),reduced font weight variety |mobile HOMEPAGE LCP improved from ~2.7s → ~1.5s | less image quality
-| Forced nextjs static rendering on SPACES PAGE due to dynamic rendering behavior | 🟡  | less clean architecture
+| Forced nextjs static rendering on SPACES PAGE due to dynamic rendering behavior | mobile SPACESPAGE LCP improved from ~3.3s → ~2.0s  | less clean architecture
 
 

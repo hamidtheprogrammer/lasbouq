@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 export default async function Locations({
   params,
 }: {
-  params: Promise<{ city: string; page: string }>;
+  params: Promise<{ city: string; PageNumber: string }>;
 }) {
   async function filter() {
     const chunk = 6;
@@ -37,7 +37,9 @@ export default async function Locations({
     const p = await params;
 
     const city = p.city?.split("_").join(" ").toLowerCase();
-    const page = Number(p.page) || 1;
+    const page = Number(p.PageNumber) || 1;
+
+   
 
     const validCities = ["london", "new york", "paris"];
 
@@ -65,6 +67,8 @@ export default async function Locations({
       client.fetch(query, { city }),
       client.fetch(countQuery, { city }),
     ]);
+
+    console.log(data)
 
     const pages = Math.ceil(total / chunk);
 
