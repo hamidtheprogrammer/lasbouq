@@ -68,8 +68,6 @@ export default async function Locations({
       client.fetch(countQuery, { city }),
     ]);
 
-    console.log(data)
-
     const pages = Math.ceil(total / chunk);
 
     return { data, pages };

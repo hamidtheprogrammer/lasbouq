@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const URL = "https://lasbouq.com/";
+const URL = "http://localhost:3000/";
 
 test.describe("Spaces page", () => {
   test("UI renders correctly", async ({ page }) => {
