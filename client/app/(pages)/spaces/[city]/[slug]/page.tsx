@@ -107,7 +107,7 @@ export default async function SpacePage({ params }: { params: any }) {
         </div>
         <section className="relative flex max-md:flex-col px-3 max-md:gap-40 gap-8">
           <div className="relative max-md:h-[100dvh] md:sticky md:self-start md:top-3 rounded-lg md:w-[45%] md:h-[calc(100dvh-1.75rem)] max-md:w-full h-70 overflow-hidden">
-            <div className="z-10 absolute max-sm:text-3xl text-5xl text-black bg-background font-italiana w-[90%] aspect-video rounded-lg max-md:left-1/2 max-md:-translate-x-1/2 top-3 md:left-3 p-10 flex items-end">
+            <div data-testid="title" className="z-10 absolute max-sm:text-3xl text-5xl text-black bg-background font-italiana w-[90%] aspect-video rounded-lg max-md:left-1/2 max-md:-translate-x-1/2 top-3 md:left-3 p-10 flex items-end">
               {space && space.title}
             </div>
             <Image

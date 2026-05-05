@@ -8,7 +8,7 @@ import Filter from "./Filter";
 import { client } from "@/app/sanity/client";
 import { normalizeSpace } from "@/app/utils/validateSchema";
 import { Suspense } from "react";
-import Loading from "../../loading";
+import Loading from "./loading";
 import { Metadata } from "next";
 
 export const revalidate = 3600;
@@ -67,8 +67,6 @@ export default async function Locations({
       client.fetch(query, { city }),
       client.fetch(countQuery, { city }),
     ]);
-
-    console.log(data)
 
     const pages = Math.ceil(total / chunk);
 

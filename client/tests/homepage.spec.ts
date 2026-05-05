@@ -94,6 +94,6 @@ test.describe("Mobile", () => {
     await expect(nav).toBeVisible();
 
     //see if mobile nav links are visible
-    await expect(nav.locator('a[href="/membership"]')).toBeVisible();
+    await expect(nav.locator('a[href="/about"]')).toBeVisible();
   });
 });
