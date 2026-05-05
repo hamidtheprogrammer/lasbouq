@@ -7,10 +7,10 @@ test.describe("Spaces page", () => {
     await page.goto(`${URL}spaces/city/page/1`);
 
     //look for headings
-    expect(page.getByRole("heading", { name: "Our member" }));
+    await expect(page.getByRole("heading", { name: "Our member" })).toBeVisible();
 
-    //look for form
-    expect(page.getByTestId("spaces-grid")).toBeVisible();
+    //look for spaces grid
+    await expect(page.getByTestId("spaces-grid")).toBeVisible();
 
   });
 });
@@ -18,11 +18,7 @@ test.describe("Spaces page", () => {
 //cache hit test (Space page section requiring cms renders without cms connection due to ISR)
 test.describe("Spaces page ISR/ No JS", () => {
   // FOR this test to run in local, there must be a next build running
-  // and the locations/spaces page should be visited at least once manually to cache the page
-
-//   test.use({
-//     javaScriptEnabled: false,
-//   });
+  // and the spaces page should be visited at least once manually to cache the page
 
   test("renders spaces grid location without JS (cache hit test)", async ({
     page,
@@ -34,9 +30,20 @@ test.describe("Spaces page ISR/ No JS", () => {
 
     await expect(spacesGrid).toBeVisible();
 
-    // space cards render 
-    await expect(spacesGrid.getByTestId("space-card")).toHaveCount(6)
+    // space cards 
+    const cards = spacesGrid.getByTestId("space-card")
 
+    //spaces cards render correctly
+    await expect(cards).toHaveCount(6)
 
   });
 });
+
+test.describe("spaces detail renders correctly",()=>{
+
+  test("space detail renders correctly", async ({page})=>{
+    await page.goto(`${URL}spaces/London/canary-wharf-executive-suite`);
+
+    await expect(page.getByTestId("title")).toBeVisible();
+  })
+})
